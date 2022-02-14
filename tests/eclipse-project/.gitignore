@@ -1,0 +1,5 @@
+Debug/
+coverage-outputs/
+*.txt
+*req_id*
+*.dfinish
