@@ -112,8 +112,14 @@ void hdlc_parse_address_tests(void) {
 		uint8_t from[] = { 0x48, 0x68, 0xfe, 0xff };
 
 		uint32_t address = hdlc_parse_address(ARRAY_SIZE(from), &from[0]);
-		CONSOLE_TRACE("Address: 0x%08x.\n", address);
 		TEST_ASSERT_EQUAL(address, 0x12343fff);
+	}
+
+	if (1) {
+		uint8_t from[] = { 0xfe, 0xfe, 0xfe, 0xff };
+
+		uint32_t address = hdlc_parse_address(ARRAY_SIZE(from), &from[0]);
+		TEST_ASSERT_EQUAL(address, 0x3fff3fff);
 	}
 
   /* Tests end */

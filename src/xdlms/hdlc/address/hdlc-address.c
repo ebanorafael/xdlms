@@ -136,16 +136,16 @@ STATIC uint32_t hdlc_parse_address(const size_t size,
 		case(2): {
 			uint16_t temp = __builtin_bswap16(*(uint16_t *)&p_from[0]);
 			address =
-					((temp >> 2) & 0xff00) |
-					((temp >> 0) & 0x00ff);
+					((temp & 0xff00) >> 2) |
+					((temp & 0x00ff) >> 0);
 			break;
 		}
 		case(4): {
 			uint32_t temp = __builtin_bswap32(*(uint32_t *)&p_from[0]);
 			address =
-					((temp >> 2) & 0xff00ff00) |
-					((temp >> 1) & 0x00ff0000) |
-					((temp >> 0) & 0x000000ff);
+					((temp & 0xff00ff00) >> 2) |
+					((temp & 0x00ff0000) >> 1) |
+					((temp & 0x000000ff) >> 0);
 			break;
 		}
 		default: {
