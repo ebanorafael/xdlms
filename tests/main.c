@@ -88,6 +88,7 @@ int main(void) {
 	if (1) { RUN_TEST(hdlc_decode_address_tests); }
 	if (1) { RUN_TEST(hdlc_pull_address_tests); }
 	if (1) { RUN_TEST(hdlc_build_address_tests); }
+	if (1) { RUN_TEST(hdlc_push_address_tests); }
 
 	return UNITY_END();
 }

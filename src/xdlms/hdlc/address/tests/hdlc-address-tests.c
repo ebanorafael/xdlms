@@ -351,3 +351,37 @@ void hdlc_build_address_tests(void) {
 
   return;
 }
+
+void hdlc_push_address_tests(void) {
+  /* Global test variables start */
+
+  /* Global test variables end */
+
+  /* Start of assertion test cases */
+
+  /* End of assertion test cases */
+
+  /* Tests start*/
+
+	if (1) {
+		status_t status = hdlc_push_address(NULL, 0, NULL);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+	if (1) { /* success */
+		const hdlc_address_t from = { .size = 4, .address = 0x3fff3fff };
+		uint8_t to[8] = { 0 };
+
+		status_t status = hdlc_push_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to[0], 0xfe);
+		TEST_ASSERT_EQUAL(to[1], 0xfe);
+		TEST_ASSERT_EQUAL(to[2], 0xfe);
+		TEST_ASSERT_EQUAL(to[3], 0xff);
+	}
+
+  /* Tests end */
+
+  return;
+}

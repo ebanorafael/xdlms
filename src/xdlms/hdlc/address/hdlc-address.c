@@ -189,9 +189,6 @@ status_t hdlc_push_address(const hdlc_address_t *p_from,
 	status_t status = hdlc_build_address(p_from, size, p_to);
 	if (status != STATUS_SUCCESS) {
 		log_event(status);
-	} else {
-		/* p_to and size already validated: set last bit */
-		p_to[size - 1] |= 0x01;
 	}
 
 	return status;

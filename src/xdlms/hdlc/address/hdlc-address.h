@@ -71,6 +71,10 @@ typedef struct hdlc_address_t {
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
+status_t hdlc_push_address(const hdlc_address_t *p_from,
+                           const size_t size,
+                           uint8_t p_to[size]);
+
 status_t hdlc_pull_address(const uint8_t p_from[4],
                            hdlc_address_t *p_to);
 
