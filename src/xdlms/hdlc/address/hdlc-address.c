@@ -66,6 +66,10 @@ STATIC status_t hdlc_decode_address(const size_t size,
                                     const uint8_t p_from[size],
                                     hdlc_address_t *p_to);
 
+STATIC status_t hdlc_build_address(const hdlc_address_t *p_from,
+                                   const size_t size,
+                                   uint8_t p_to[size]);
+
 #endif /* UNIT_TESTS */
 
 /*******************************************************************
@@ -88,29 +92,29 @@ STATIC status_t hdlc_build_address(const hdlc_address_t *p_from,
 	ASSERT_DEVELOP(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
 	ASSERT_DEVELOP(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
 
-	RETURN_IF_FALSE(size != 0, STATUS_HDLC_INVALID_PARAMETER);
-	RETURN_IF_FALSE(size == p_from->size, STATUS_HDLC_BUFFER_OVERFLOW);
+	RETURN_IF_FALSE(!(p_from->size > sizeof(uint32_t)), STATUS_HDLC_INVALID_PARAMETER);
+	RETURN_IF_FALSE(!(p_from->size > size), STATUS_HDLC_BUFFER_OVERFLOW);
 
 	switch(p_from->size) {
 		default: { /* { 0, 3 or larger than 4 } */
 			return STATUS_HDLC_ADDRESS_BUILD_FAIL;
 		}
 		case(1): {
-			p_to[0] = (p_from->address >> 0) << 1;
+			p_to[0] = ((p_from->address << 1) >> 0) | 0x01;
 
 			break;
 		}
 		case(2): {
-			p_to[1] = (p_from->address >> 8) << 1;
-			p_to[0] = (p_from->address >> 0) << 1;
+			p_to[0] = ((p_from->address << 2) >> 8) & 0xfe;
+			p_to[1] = ((p_from->address << 0) >> 0) | 0x01;
 
 			break;
 		}
 		case(4): {
-			p_to[3] = (p_from->address >> 24) << 2;
-			p_to[2] = (p_from->address >> 16) << 1;
-			p_to[1] = (p_from->address >>  8) << 2;
-			p_to[0] = (p_from->address >>  0) << 1;
+			p_to[0] = ((p_from->address << 2) >> 24) & 0xfe ;
+			p_to[1] = ((p_from->address << 1) >> 16) & 0xfe ;
+			p_to[2] = ((p_from->address << 2) >>  8) & 0xfe ;
+			p_to[3] = ((p_from->address << 0) >>  0) | 0x01 ;
 
 			break;
 		}
@@ -128,6 +132,10 @@ STATIC uint32_t hdlc_parse_address(const size_t size,
 
 	uint32_t address = 0x00000000;
 	switch(size) {
+		default: { /* { 0, 3 or larger than 4 } */
+			address = 0xffffffff;
+			break;
+		}
 		case(1): {
 			uint8_t temp = p_from[0];
 			address = (temp >> 1) & 0xff;
@@ -146,10 +154,6 @@ STATIC uint32_t hdlc_parse_address(const size_t size,
 					((temp & 0xff00ff00) >> 2) |
 					((temp & 0x00ff0000) >> 1) |
 					((temp & 0x000000ff) >> 0);
-			break;
-		}
-		default: {
-			address = 0xffffffff;
 			break;
 		}
 	}

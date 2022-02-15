@@ -26,6 +26,7 @@ extern "C"
 void hdlc_parse_address_tests(void);
 void hdlc_decode_address_tests(void);
 void hdlc_pull_address_tests(void);
+void hdlc_build_address_tests(void);
 
 #ifdef __cplusplus
 }

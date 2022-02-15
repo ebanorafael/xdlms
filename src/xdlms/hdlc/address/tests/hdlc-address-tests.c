@@ -246,3 +246,108 @@ void hdlc_pull_address_tests(void) {
 
   return;
 }
+
+void hdlc_build_address_tests(void) {
+  /* Global test variables start */
+
+  /* Global test variables end */
+
+  /* Start of assertion test cases */
+
+	if (1) { /* null pointer */
+		status_t status = hdlc_build_address(NULL, 0, NULL);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+ 	if (1) { /* null pointer */
+		const hdlc_address_t from;
+
+		status_t status = hdlc_build_address(&from, 0, NULL);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+  /* End of assertion test cases */
+
+  /* Tests start*/
+
+	if (1) { /* invalid address size: 5 */
+		const hdlc_address_t from = { .size = 5 };
+		uint8_t to[1];
+
+		status_t status = hdlc_build_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+	if (1) { /* address size larger than buffer to hold it */
+		const hdlc_address_t from = { .size = 4 };
+		uint8_t to[2];
+
+		status_t status = hdlc_build_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_BUFFER_OVERFLOW);
+	}
+
+	if (1) { /* invalid address sizes: 0 and 3 */
+		hdlc_address_t from;
+		uint8_t to[2];
+		status_t status;
+
+		from.size = 0;
+		status = hdlc_build_address(&from, from.size, &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_BUILD_FAIL);
+
+		from.size = 3;
+		status = hdlc_build_address(&from, from.size, &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_BUILD_FAIL);
+	}
+
+	if (1) { /* success */
+		const hdlc_address_t from = { .size = 1, .address = 0x7f };
+		uint8_t to[8] = { 0 };
+
+		status_t status = hdlc_build_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to[0], 0xff);
+	}
+
+	if (1) { /* success */
+		const hdlc_address_t from = { .size = 2, .address = 0x3fff };
+		uint8_t to[8] = { 0 };
+
+		status_t status = hdlc_build_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to[0], 0xfe);
+		TEST_ASSERT_EQUAL(to[1], 0xff);
+	}
+
+	if (1) { /* success */
+		const hdlc_address_t from = { .size = 4, .address = 0x12343fff };
+		uint8_t to[8] = { 0 };
+
+		status_t status = hdlc_build_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to[0], 0x48);
+		TEST_ASSERT_EQUAL(to[1], 0x68);
+		TEST_ASSERT_EQUAL(to[2], 0xfe);
+		TEST_ASSERT_EQUAL(to[3], 0xff);
+	}
+
+	if (1) { /* success */
+		const hdlc_address_t from = { .size = 4, .address = 0x3fff3fff };
+		uint8_t to[8] = { 0 };
+
+		status_t status = hdlc_build_address(&from, ARRAY_SIZE(to), &to[0]);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to[0], 0xfe);
+		TEST_ASSERT_EQUAL(to[1], 0xfe);
+		TEST_ASSERT_EQUAL(to[2], 0xfe);
+		TEST_ASSERT_EQUAL(to[3], 0xff);
+	}
+
+  /* Tests end */
+
+  return;
+}

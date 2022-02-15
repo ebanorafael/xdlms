@@ -83,6 +83,10 @@ STATIC status_t hdlc_decode_address(const size_t size,
                                     const uint8_t p_from[size],
                                     hdlc_address_t *p_to);
 
+STATIC status_t hdlc_build_address(const hdlc_address_t *p_from,
+                                   const size_t size,
+                                   uint8_t p_to[size]);
+
 #endif /* UNIT_TESTS */
  
 #ifdef __cplusplus
