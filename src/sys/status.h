@@ -11,7 +11,7 @@ extern "C"
  * EXTERNED DEFINES
  *******************************************************************/
 
-#define STATUS(CLASS, VALUE)  ((CLASS) | (VALUE << 8))
+#define STATUS(CLASS, VALUE)  ((CLASS << 8) | (VALUE))
 
 #ifdef UNIT_TESTS
 
@@ -49,6 +49,7 @@ typedef enum status_class_t {
 
 typedef enum status_t {
   STATUS_SUCCESS = 0,
+  STATUS_ARRAY_INVALID_PARAMETER = STATUS(STATUS_CLASS_SYS, 1),
   /* HDLC status class*/
   STATUS_HDLC_INVALID_PARAMETER = STATUS(STATUS_CLASS_HDLC, 1),
   STATUS_HDLC_BUFFER_OVERFLOW = STATUS(STATUS_CLASS_HDLC, 2),
