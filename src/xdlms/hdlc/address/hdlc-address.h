@@ -14,7 +14,7 @@ extern "C"
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
-	
+
 /*******************************************************************
  * INCLUDES
  *******************************************************************/
@@ -35,7 +35,6 @@ extern "C"
 
 /* Module functioning includes start */
 
-
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
@@ -47,8 +46,8 @@ extern "C"
  *******************************************************************/
 
 typedef struct hdlc_address_t {
-  uint32_t address;
-  size_t size;
+	uint32_t address;
+	size_t size;
 } hdlc_address_t;
 
 #ifdef UNIT_TESTS
@@ -71,28 +70,33 @@ typedef struct hdlc_address_t {
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
-status_t hdlc_push_address(const hdlc_address_t *p_from,
-                           const size_t size,
-                           uint8_t p_to[size]);
+status_t
+hdlc_push_address(const hdlc_address_t *p_from,
+                  const size_t size,
+                  uint8_t p_to[size]);
 
-status_t hdlc_pull_address(const uint8_t p_from[4],
-                           hdlc_address_t *p_to);
+status_t
+hdlc_pull_address(const uint8_t p_from[4],
+                  hdlc_address_t *p_to);
 
 #ifdef UNIT_TESTS
 
-STATIC uint32_t hdlc_parse_address(const size_t size,
-                                   const uint8_t p_from[size]);
+STATIC uint32_t
+hdlc_parse_address(const size_t size,
+                   const uint8_t p_from[size]);
 
-STATIC status_t hdlc_decode_address(const size_t size,
-                                    const uint8_t p_from[size],
-                                    hdlc_address_t *p_to);
+STATIC status_t
+hdlc_decode_address(const size_t size,
+                    const uint8_t p_from[size],
+                    hdlc_address_t *p_to);
 
-STATIC status_t hdlc_build_address(const hdlc_address_t *p_from,
-                                   const size_t size,
-                                   uint8_t p_to[size]);
+STATIC status_t
+hdlc_build_address(const hdlc_address_t *p_from,
+                   const size_t size,
+                   uint8_t p_to[size]);
 
 #endif /* UNIT_TESTS */
- 
+
 #ifdef __cplusplus
 }
 #endif /*  __cplusplus */

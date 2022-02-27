@@ -31,8 +31,7 @@
 
 /* Module functioning includes start */
 
-#include "log.h"
-#include "time.h"
+#include "array.h"
 #include "utils.h"
 
 #ifdef UNIT_TESTS
@@ -75,12 +74,15 @@
  * FUNCTIONS
  *******************************************************************/
 
-void
-log_event(status_t status) {
-	time_t now = time(NULL);
+status_t
+array_pull(array_ro_t *p_from, const size_t size, uint8_t p_to[size]) {
+	(void) p_from;
+	(void) size;
+	(void) p_to;
 
-	CONSOLE_TRACE("%lld: 0x%08x.\n", now, status);
-	return;
+	ASSERT_DEVELOP(p_from != NULL, STATUS_ARRAY_INVALID_PARAMETER);
+
+	return STATUS_SUCCESS;
 }
 
 #ifdef UNIT_TESTS

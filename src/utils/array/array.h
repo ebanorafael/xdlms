@@ -1,27 +1,28 @@
-///@file
+/// @file
+
+#pragma once
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif /*  __cplusplus */
 
 /*******************************************************************
- * PRIVATE DEFINES
+ * EXTERNED DEFINES
  *******************************************************************/
-
-/* Module functioning defines start */
 
 #ifdef UNIT_TESTS
 
-#else
-
-/*! @brief Hides internal function definitions when not in unit test environment */
-#define STATIC    static
-
 #endif /* UNIT_TESTS */
-
-/* Module functioning defines end */
-
+	
 /*******************************************************************
  * INCLUDES
  *******************************************************************/
 
 /* System functioning includes start */
+
+#include <stddef.h>
+#include <stdint.h>
 
 #ifdef UNIT_TESTS
 
@@ -31,9 +32,7 @@
 
 /* Module functioning includes start */
 
-#include "log.h"
-#include "time.h"
-#include "utils.h"
+#include "status.h"
 
 #ifdef UNIT_TESTS
 
@@ -42,7 +41,26 @@
 /* Module functioning includes end */
 
 /*******************************************************************
- * PRIVATE TYPES
+ * EXTERNED TYPES
+ *******************************************************************/
+
+/*!
+ * Read-Only Array
+ */
+typedef struct array_ro_t {
+	uint8_t *p_base;
+	const size_t size;
+	size_t start;
+} array_ro_t;
+
+#ifdef UNIT_TESTS
+
+#else /* UNIT_TESTS */
+
+#endif /* UNIT_TESTS */
+
+/*******************************************************************
+ * EXTERNED DATA
  *******************************************************************/
 
 #ifdef UNIT_TESTS
@@ -52,39 +70,16 @@
 #endif /* UNIT_TESTS */
 
 /*******************************************************************
- * PRIVATE PROTOTYPES
+ * EXTERNED FUNCTIONS
  *******************************************************************/
+
+status_t
+array_pull(array_ro_t *p_from, const size_t size, uint8_t p_to[size]);
 
 #ifdef UNIT_TESTS
 
-#else /* UNIT_TESTS */
-
 #endif /* UNIT_TESTS */
-
-/*******************************************************************
- * PRIVATE DATA
- *******************************************************************/
-
-#ifdef UNIT_TESTS
-
-#else /* UNIT_TESTS */
-
-#endif /* UNIT_TESTS */
-
-/*******************************************************************
- * FUNCTIONS
- *******************************************************************/
-
-void
-log_event(status_t status) {
-	time_t now = time(NULL);
-
-	CONSOLE_TRACE("%lld: 0x%08x.\n", now, status);
-	return;
+ 
+#ifdef __cplusplus
 }
-
-#ifdef UNIT_TESTS
-
-#else /* UNIT_TESTS */
-
-#endif /* UNIT_TESTS */
+#endif /*  __cplusplus */

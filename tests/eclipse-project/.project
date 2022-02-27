@@ -25,6 +25,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>sources/array</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>sources/hdlc</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -33,6 +38,16 @@
 			<name>sources/main.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/main.c</locationURI>
+		</link>
+		<link>
+			<name>sources/array/array.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/array.c</locationURI>
+		</link>
+		<link>
+			<name>sources/array/array.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/array.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/address</name>
