@@ -33,6 +33,7 @@
 
 /* Module functioning includes start */
 
+#include "array-tests.h"
 #include "hdlc-address-tests.h"
 
 #ifdef UNIT_TESTS
@@ -84,11 +85,13 @@
 int main(void) {
 	UNITY_BEGIN();
 
-	if (1) { RUN_TEST(hdlc_parse_address_tests); }
-	if (1) { RUN_TEST(hdlc_decode_address_tests); }
-	if (1) { RUN_TEST(hdlc_pull_address_tests); }
-	if (1) { RUN_TEST(hdlc_build_address_tests); }
-	if (1) { RUN_TEST(hdlc_push_address_tests); }
+	if (1) { RUN_TEST(array_used_tests); }
+
+	if (0) { RUN_TEST(hdlc_parse_address_tests); }
+	if (0) { RUN_TEST(hdlc_decode_address_tests); }
+	if (0) { RUN_TEST(hdlc_pull_address_tests); }
+	if (0) { RUN_TEST(hdlc_build_address_tests); }
+	if (0) { RUN_TEST(hdlc_push_address_tests); }
 
 	return UNITY_END();
 }

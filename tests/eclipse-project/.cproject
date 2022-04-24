@@ -28,6 +28,8 @@
 									<listOptionValue builtIn="false" value="../lib/unity"/>
 									<listOptionValue builtIn="false" value="../../../src/sys"/>
 									<listOptionValue builtIn="false" value="../../../src/utils"/>
+									<listOptionValue builtIn="false" value="../../../src/utils/array"/>
+									<listOptionValue builtIn="false" value="../../../src/utils/array/tests"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address/tests"/>
 								</option>
@@ -60,7 +62,7 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="lib"/>
-						<entry excluding="application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
+						<entry excluding="hdlc|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -105,7 +107,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
+						<entry excluding="hdlc|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

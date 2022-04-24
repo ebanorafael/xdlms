@@ -50,6 +50,11 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/array.h</locationURI>
 		</link>
 		<link>
+			<name>sources/array/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>sources/hdlc/address</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -58,6 +63,16 @@
 			<name>sources/hdlc/sys</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/array/tests/array-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/tests/array-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/array/tests/array-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/tests/array-tests.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/address/hdlc-address.c</name>
