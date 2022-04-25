@@ -86,6 +86,17 @@ int main(void) {
 	UNITY_BEGIN();
 
 	if (1) { RUN_TEST(array_used_tests); }
+	if (1) { RUN_TEST(array_free_tests); }
+	if (1) { RUN_TEST(arrays_validate_tests); }
+	if (1) { RUN_TEST(array_serialize_tests); }
+	if (1) { RUN_TEST(array_drop_tests); }
+	if (1) { RUN_TEST(array_copy_tests); }
+	if (1) { RUN_TEST(array_move_tests); }
+	if (1) { RUN_TEST(array_push_tests); }
+	if (1) { RUN_TEST(array_pull_tests); }
+	if (1) { RUN_TEST(array_push_hton_tests); }
+	if (1) { RUN_TEST(array_push_hton_tests); }
+
 
 	if (0) { RUN_TEST(hdlc_parse_address_tests); }
 	if (0) { RUN_TEST(hdlc_decode_address_tests); }

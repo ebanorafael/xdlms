@@ -79,7 +79,7 @@ arrays_validate(const array_t p_from[static 1],
                 const array_t p_to[static 1],
                 const size_t size) {
 	const size_t from_size = array_used(p_from);
-	const size_t to_size = array_used(p_to);
+	const size_t to_size = array_free(p_to);
 
 	RETURN_IF_FALSE(from_size != (size_t)-1, STATUS_ARRAY_INVALID_PARAMETER);
 	RETURN_IF_FALSE(to_size != (size_t)-1, STATUS_ARRAY_INVALID_PARAMETER);
@@ -101,34 +101,36 @@ array_serialize(const array_t p_from[static 1],
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
 	uint8_t *p_src = (uint8_t *)&p_from->p_array[p_from->start + size - 1];
-	uint8_t *p_dst = (uint8_t *)&p_from->p_array[p_from->end];
+	uint8_t *p_dst = (uint8_t *)&p_to->p_array[p_to->end];
 
 	while(size--) {
-		*p_dst++ = *p_src++;
+		*p_dst++ = *p_src--;
 	}
 
 	return STATUS_SUCCESS;
 }
 
 size_t
-array_free(const array_t p_from[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, (size_t)-1);
-
-	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)-1);
-	return p_from->size - p_from->end;
-}
-
-size_t
 array_used(const array_t p_from[static 1]) {
 	ASSERT_DEVELOP(p_from != NULL, (size_t)-1);
 
-	/* end must no be larger than size */
+	/* end must not be larger than size */
 	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)-1);
 
 	/* start must not be larger than end */
 	RETURN_IF_FALSE(!(p_from->start > p_from->end), (size_t)-1);
 
 	return p_from->end - p_from->start;
+}
+
+size_t
+array_free(const array_t p_from[static 1]) {
+	ASSERT_DEVELOP(p_from != NULL, (size_t)-1);
+
+	/* end must not be larger than size */
+	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)-1);
+
+	return p_from->size - p_from->end;
 }
 
 status_t
@@ -151,13 +153,13 @@ array_copy(const array_t p_from[static 1],
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
 	uint8_t *p_src = (uint8_t *)&p_from->p_array[p_from->start];
-	uint8_t *p_dst = (uint8_t *)&p_from->p_array[p_from->end];
+	uint8_t *p_dst = (uint8_t *)&p_to->p_array[p_to->end];
 
+	p_to->end += size;
 	while(size--) {
 		*p_dst++ = *p_src++;
 	}
 
-	p_to->end += size;
 	return STATUS_SUCCESS;
 }
 
@@ -193,6 +195,14 @@ array_push_hton(const uint8_t p_from[static 1],
                 const size_t size) {
 	array_t from = ARRAY_USED(p_from, size);
 	return array_serialize(&from, p_to, size);
+}
+
+status_t
+array_pull_hton(const array_t p_from[static 1],
+                const uint8_t p_to[static 1],
+                size_t size) {
+	array_t to = ARRAY_FREE(p_to, size);
+	return array_serialize(p_from, &to, size);
 }
 
 #ifdef UNIT_TESTS
