@@ -77,9 +77,6 @@
 
 void
 log_event(status_t status) {
-	time_t now = time(NULL);
-
-	CONSOLE_TRACE("%lld: 0x%08x.\n", now, status);
 	return;
 }
 
