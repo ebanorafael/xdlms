@@ -142,7 +142,7 @@ hdlc_parse_address(array_t p_from[static 1],
 	uint32_t temp = 0;
 
 	status_t status = array_pull_hton(p_from, (uint8_t *)&temp, size);
-	RETURN_IF_FALSE(status != STATUS_SUCCESS, (uint32_t)-1);
+	RETURN_IF_FALSE(status == STATUS_SUCCESS, (uint32_t)-1);
 
 	switch(size) {
 		default: {
@@ -178,11 +178,11 @@ hdlc_decode_address(array_t p_from[static const 1],
 
 	static const hdlc_address_t hdlc_address_invalid = {
 	  .address = (uint32_t)-1,
-	  .size = (uint32_t)-1
+	  .size = (size_t)-1
 	};
 
+	RETURN_IF_FALSE((p_from->p_array[size - 1] & 0x01) != 0, STATUS_HDLC_ADDRESS_INVALID);
 	p_to[0] = hdlc_address_invalid;
-	/* check if last bit is set */
 
 	uint32_t address = hdlc_parse_address(p_from, size);
 	RETURN_IF_FALSE(address != (uint32_t)-1, STATUS_HDLC_ADDRESS_PARSE_FAIL);

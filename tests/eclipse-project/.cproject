@@ -43,7 +43,7 @@
 								</option>
 								<option id="gnu.c.compiler.option.dialect.std.2117316560" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.c11" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.codecov.1079449882" name="Generate gcov information (-ftest-coverage -fprofile-arcs)" superClass="gnu.c.compiler.option.debugging.codecov" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-								<option id="gnu.c.compiler.option.misc.other.1427021773" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -Wstrict-prototypes -fstack-usage -Wl,-Map=test.map" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1427021773" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -Wl,-Map=test.map" valueType="string"/>
 								<option id="gnu.c.compiler.option.warnings.extrawarn.577304224" name="Extra warnings (-Wextra)" superClass="gnu.c.compiler.option.warnings.extrawarn" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1067747289" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>

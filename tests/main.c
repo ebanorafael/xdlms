@@ -98,7 +98,7 @@ int main(void) {
 	if (1) { RUN_TEST(array_push_hton_tests); }
 
 
-	if (0) { RUN_TEST(hdlc_parse_address_tests); }
+	if (1) { RUN_TEST(hdlc_parse_address_tests); }
 	if (0) { RUN_TEST(hdlc_decode_address_tests); }
 	if (0) { RUN_TEST(hdlc_pull_address_tests); }
 	if (0) { RUN_TEST(hdlc_build_address_tests); }
