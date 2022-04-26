@@ -163,13 +163,13 @@ void hdlc_decode_address_tests(void) {
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-	if (1) { /* fail: address without first bit set */
+	if (1) { /* fail: LSB not set */
 		uint8_t data[] = { 0xff, 0xfe };
 		array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
 		hdlc_address_t to = { 0 };
 
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
-    TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+    TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_INVALID);
 
     TEST_ASSERT_EQUAL(to.address, (uint32_t)-1);
     TEST_ASSERT_EQUAL(to.size, (uint32_t)-1);
@@ -193,7 +193,7 @@ void hdlc_decode_address_tests(void) {
 		hdlc_address_t to = { 0 };
 
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
-    TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_PARSE_FAIL);
+    TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
     TEST_ASSERT_EQUAL(to.address, 0x12343fff);
     TEST_ASSERT_EQUAL(to.size, 4);
@@ -214,42 +214,45 @@ void hdlc_pull_address_tests(void) {
   /* Global test variables end */
 
   /* Start of assertion test cases */
-#if 0
-  if (1) {
+
+	if (1) { /* fail: null pointer */
     status_t status = hdlc_pull_address(NULL, NULL);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (1) {
-    const uint8_t from[] = { 0xfe, 0xfe, 0xfe, 0xfe };
+  /* End of assertion test cases */
+
+  /* Tests start*/
+
+  if (1) { /* fail: array of data with 0 size */
+    array_t from = ARRAY_USED(NULL, 0);
     hdlc_address_t to = { 0 };
 
-    status_t status = hdlc_pull_address(&from[0], &to);
+    status_t status = hdlc_pull_address(&from, &to);
+    TEST_ASSERT_EQUAL(status, STATUS_ARRAY_BUFFER_OVERFLOW);
+  }
+
+  if (1) { /* fail: address with LSB not set */
+    const uint8_t data[] = { 0xfe, 0xfe, 0xfe, 0xfe };
+    array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
+
+    hdlc_address_t to = { 0 };
+
+    status_t status = hdlc_pull_address(&from, &to);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (1) {
-    const uint8_t from[] = { 0xfe, 0xfe, 0xfe, 0xfe };
+  if (1) { /* success */
+    const uint8_t data[] = { 0x80, 0x41 };
+    array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
     hdlc_address_t to = { 0 };
 
-    status_t status = hdlc_pull_address(&from[0], &to);
-    TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
-  }
-
-  if (1) {
-    const uint8_t from[] = { 0x80, 0x41 };
-    hdlc_address_t to = { 0 };
-
-    status_t status = hdlc_pull_address(&from[0], &to);
+    status_t status = hdlc_pull_address(&from, &to);
     TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
     TEST_ASSERT_EQUAL(to.address, 0x2041);
     TEST_ASSERT_EQUAL(to.size, sizeof(uint16_t));
   }
-#endif
-  /* End of assertion test cases */
-
-  /* Tests start*/
 
   /* Tests end */
 
