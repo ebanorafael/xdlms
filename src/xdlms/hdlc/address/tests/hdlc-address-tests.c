@@ -391,25 +391,26 @@ void hdlc_push_address_tests(void) {
   /* End of assertion test cases */
 
   /* Tests start*/
-#if 0
-  if (0) {
-    status_t status = hdlc_push_address(NULL, 0, NULL);
+
+	if (1) { /* fail: null pointer */
+    status_t status = hdlc_push_address(NULL, NULL);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (0) { /* success */
-    const hdlc_address_t from = { .size = 4, .address = 0x3fff3fff };
-    uint8_t to[8] = { 0 };
+  if (1) { /* success */
+    const hdlc_address_t from = { .address = 0x3fff3fff, .size = 4 };
+    uint8_t data[8] = { 0 };
+    array_t to = ARRAY_FREE(data, ARRAY_SIZE(data));
 
-    status_t status = hdlc_push_address(&from, ARRAY_SIZE(to), &to[0]);
+    status_t status = hdlc_push_address(&from, &to);
     TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-    TEST_ASSERT_EQUAL(to[0], 0xfe);
-    TEST_ASSERT_EQUAL(to[1], 0xfe);
-    TEST_ASSERT_EQUAL(to[2], 0xfe);
-    TEST_ASSERT_EQUAL(to[3], 0xff);
+    TEST_ASSERT_EQUAL(data[0], 0xfe);
+    TEST_ASSERT_EQUAL(data[1], 0xfe);
+    TEST_ASSERT_EQUAL(data[2], 0xfe);
+    TEST_ASSERT_EQUAL(data[3], 0xff);
   }
-#endif
+
   /* Tests end */
 
   return;

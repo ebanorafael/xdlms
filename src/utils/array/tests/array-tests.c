@@ -271,7 +271,7 @@ void array_serialize_tests(void) {
 		TEST_ASSERT_EQUAL(array[2], 0x03);
 		TEST_ASSERT_EQUAL(array[3], 0x04);
 
-		MEMORY_TRACE(1, to.p_array, array_used(&to), "Serialized data (%u bytes): ",
+		MEMORY_TRACE(0, to.p_array, array_used(&to), "Serialized data (%u bytes): ",
 		             (uint32_t)array_used(&to));
 	}
 
