@@ -134,64 +134,71 @@ void hdlc_decode_address_tests(void) {
   /* Global test variables end */
 
   /* Start of assertion test cases */
-#if 0
-  if (1) {
-    status_t status = hdlc_decode_address(0, NULL, NULL);
+
+	if (1) { /* fail: null pointer */
+    status_t status = hdlc_decode_address(NULL, NULL, -1);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (1) {
-    uint8_t from[1];
+	if (1) { /* fail: null pointer */
+		array_t from = ARRAY_FREE(NULL, 0);
 
-    status_t status = hdlc_decode_address(0, &from[0], NULL);
+    status_t status = hdlc_decode_address(&from, NULL, -1);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (1) {
-    uint8_t from[5];
-    hdlc_address_t to;
+	if (1) { /* fail: zero size */
+		array_t from = ARRAY_FREE(NULL, 0);
+		hdlc_address_t to = { 0 };
 
-    status_t status = hdlc_decode_address(ARRAY_SIZE(from), &from[0], &to);
+    status_t status = hdlc_decode_address(&from, &to, 0);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (1) {
-    uint8_t from[] = { 0xfe, 0xfe, 0xfe, 0xfe };
+	if (1) { /* fail: size larger than 4 bytes */
+		array_t from = ARRAY_FREE(NULL, 0);
+		hdlc_address_t to = { 0 };
 
-    for (size_t size = 1; size <= sizeof(uint32_t); size <<= 1) {
-      hdlc_address_t to = { 0 };
-
-      status_t status = hdlc_decode_address(ARRAY_SIZE(from), &from[0], &to);
-      TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_INVALID);
-
-      TEST_ASSERT_EQUAL(to.address, 0xffffffff);
-      TEST_ASSERT_EQUAL(to.size, 0xffffffff);
-    }
+    status_t status = hdlc_decode_address(&from, &to, sizeof(uint32_t) + 1);
+    TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-  if (1) {
-    uint8_t from[] = { 0xfe, 0xfe, 0xff };
-    hdlc_address_t to = { 0 };
+	if (1) { /* fail: address without first bit set */
+		uint8_t data[] = { 0xff, 0xfe };
+		array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
+		hdlc_address_t to = { 0 };
 
-    status_t status = hdlc_decode_address(ARRAY_SIZE(from), &from[0], &to);
+    status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
+    TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+
+    TEST_ASSERT_EQUAL(to.address, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(to.size, (uint32_t)-1);
+	}
+
+	if (1) { /* fail: invalid address size (3) */
+		uint8_t data[] = { 0xff, 0xff, 0xff };
+		array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
+		hdlc_address_t to = { 0 };
+
+    status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_PARSE_FAIL);
 
-    TEST_ASSERT_EQUAL(to.address, 0xffffffff);
-    TEST_ASSERT_EQUAL(to.size, 0xffffffff);
-  }
+    TEST_ASSERT_EQUAL(to.address, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(to.size, (uint32_t)-1);
+	}
 
-  if (1) {
-    uint8_t from[] = { 0x48, 0x68, 0xfe, 0xff };
-    hdlc_address_t to = { 0 };
+	if (1) { /* fail: invalid address size (3) */
+		uint8_t data[] = { 0x48, 0x68, 0xfe, 0xff };
+		array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
+		hdlc_address_t to = { 0 };
 
-    status_t status = hdlc_decode_address(ARRAY_SIZE(from), &from[0], &to);
-    TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+    status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
+    TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_PARSE_FAIL);
 
     TEST_ASSERT_EQUAL(to.address, 0x12343fff);
-    TEST_ASSERT_EQUAL(to.size, sizeof(uint32_t));
-  }
+    TEST_ASSERT_EQUAL(to.size, 4);
+	}
 
-#endif
   /* End of assertion test cases */
 
   /* Tests start*/
