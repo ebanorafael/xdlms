@@ -296,7 +296,6 @@ STATIC status_t xdlms_asn1_axdr_decode(
 			return xdlms_asn1_axdr_decode_sequence_of(p_from, p_to);
 		}
 		case (XDLMS_ASN1_AXDR_TYPE_BIT_STRING): {
-			/* @ToDo: Implementation pending */
 			break;
 		}
 		case (XDLMS_ASN1_AXDR_TYPE_OCTET_STRING):
@@ -305,7 +304,6 @@ STATIC status_t xdlms_asn1_axdr_decode(
 			return xdlms_asn1_axdr_decode_sequence_of_bytes(p_from, p_to);
 		}
 		case (XDLMS_ASN1_AXDR_TYPE_COMPACT_ARRAY): {
-			/* @ToDo: Implementation pending */
 			break;
 		}
 		case (XDLMS_ASN1_AXDR_TYPE_INVALID_1):
