@@ -205,10 +205,10 @@ hdlc_pull_address(array_t p_from[static 1],
 	ASSERT(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
 
 	size_t size = 1;
-	array_t temp = p_from[0];
 
 	for (; size <= sizeof(uint32_t); size <<= 1) {
-		uint32_t address = -1;
+		uint32_t address = (uint32_t)~0;
+		array_t temp = p_from[0];
 
 		status_t status = array_pull_hton(&temp, (uint8_t *)&address, size);
 		RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
