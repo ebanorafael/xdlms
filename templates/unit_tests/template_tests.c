@@ -5,7 +5,10 @@
  *************************************************************************************************/
 
 /* Unit Test file header files inclusion start */
-#include "tests_framework.h"
+
+#include "unity.h"
+#include "template_tests.h"
+
 /* Unit Test file header files inclusion end */
 
 /**************************************************************************************************
@@ -34,7 +37,7 @@
 
 #if defined COPY
 
-TEST_FUNCTION(funcion_name_tests) {
+void function_name_tests(void) {
   /* Global test variables start */
 
   /* Global test variables end */
@@ -45,6 +48,8 @@ TEST_FUNCTION(funcion_name_tests) {
 
   /* Tests start*/
 
+  TEST_ASSERT_EQUAL(1, 1);
+  
   /* Tests end */
   
   return;

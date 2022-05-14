@@ -27,11 +27,11 @@
 
 #endif /* UNIT_TESTS */
 
+#include "header.h"
+
 /* System functioning includes end */
 
 /* Module functioning includes start */
-
-#include "header.h"
 
 #ifdef UNIT_TESTS
 
