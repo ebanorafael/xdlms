@@ -117,7 +117,7 @@ typedef enum xdlms_asn1_axdr_type_t {
 	XDLMS_ASN1_AXDR_TYPE_DELTA_UINT32 = 33,
 	/*! DLMS ASN.1 A-XDR Max value data type */
 	XDLMS_ASN1_AXDR_TYPE_MAX,
-	/* ---------------------------- */
+	/* Invalid data tags */
 	/*! DLMS ASN.1 A-XDR invalid data type */
 	XDLMS_ASN1_AXDR_TYPE_INVALID_1 = 7,
 	/*! DLMS ASN.1 A-XDR invalid data type */
@@ -177,6 +177,13 @@ typedef struct xdlms_asn1_axdr_resource_t {
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
+/*!
+ * @brief Finds Data size from it's tag
+ * @param tag Value of tag
+ * @return 0: if Sequence type
+ * 				 0xff: if Invalid Data type,
+ *         1, 2, 4 or 8: if Standard data type
+ */
 size_t
 xdlms_asn1_axdr_get_size(
   const xdlms_asn1_axdr_type_t tag
