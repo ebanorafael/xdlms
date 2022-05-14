@@ -42,6 +42,8 @@
 
 #endif /* UNIT_TESTS */
 
+#include "utils.h"
+
 /* Module functioning includes end */
 
 /*******************************************************************
@@ -87,6 +89,8 @@
 int main(void) {
 	UNITY_BEGIN();
 
+	PRINT("===== Array lib. Tests =====\n\n");
+
 	if (1) { RUN_TEST(array_used_tests); }
 	if (1) { RUN_TEST(array_free_tests); }
 	if (1) { RUN_TEST(arrays_validate_tests); }
@@ -99,6 +103,8 @@ int main(void) {
 	if (1) { RUN_TEST(array_push_hton_tests); }
 	if (1) { RUN_TEST(array_push_hton_tests); }
 
+	PRINT("\n===== xDLMS ASN.1 A-XDR Encode lib. Tests =====\n\n");
+
 	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_tag_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_multi_byte_len_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_len_tests); }
@@ -109,6 +115,8 @@ int main(void) {
 	if (1) { RUN_TEST(xdlms_ans1_axdr_encode_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_list_tests); }
 
+	PRINT("\n===== xDLMS ASN.1 A-XDR Decode lib. Tests =====\n\n");
+
 	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_tag_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_len_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_standard_tests); }
@@ -117,6 +125,8 @@ int main(void) {
 	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_validate_tests); }
 	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_list_tests); }
+
+	PRINT("\n===== xDLMS HDLC Address lib. Tests =====\n\n");
 
 	if (1) { RUN_TEST(hdlc_parse_address_tests); }
 	if (1) { RUN_TEST(hdlc_decode_address_tests); }
