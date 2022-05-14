@@ -30,6 +30,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>sources/asn1</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>sources/hdlc</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -55,6 +60,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>sources/asn1/axdr</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>sources/hdlc/address</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -73,6 +83,21 @@
 			<name>sources/array/tests/array-tests.h</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/tests/array-tests.h</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/xdlms-asn1-axdr.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/xdlms-asn1-axdr.c</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/xdlms-asn1-axdr.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/xdlms-asn1-axdr.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/address/hdlc-address.c</name>
@@ -103,6 +128,16 @@
 			<name>sources/hdlc/sys/status.h</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/src/sys/status.h</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/tests/xdlms-asn1-axdr-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/tests/xdlms-asn1-axdr-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/tests/xdlms-asn1-axdr-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/tests/xdlms-asn1-axdr-tests.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/address/tests/hdlc-address-tests.c</name>

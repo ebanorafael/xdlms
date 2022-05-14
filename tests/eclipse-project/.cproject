@@ -64,7 +64,7 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="lib"/>
-						<entry excluding="application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
+						<entry excluding="asn1/axdr/tests|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -109,7 +109,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
+						<entry excluding="asn1/axdr/tests|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
