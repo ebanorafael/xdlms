@@ -112,7 +112,7 @@ array_serialize(const array_t p_from[static 1],
 
 size_t
 array_used(const array_t p_from[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, (size_t)~0);
+	ASSERT(p_from != NULL, (size_t)~0);
 
 	/* end must not be larger than size */
 	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)~0);
@@ -125,7 +125,7 @@ array_used(const array_t p_from[static 1]) {
 
 size_t
 array_free(const array_t p_from[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, (size_t)~0);
+	ASSERT(p_from != NULL, (size_t)~0);
 
 	/* end must not be larger than size */
 	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)~0);

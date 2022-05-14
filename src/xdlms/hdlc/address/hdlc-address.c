@@ -96,8 +96,8 @@ hdlc_build_address(const hdlc_address_t p_from[static 1],
 STATIC status_t
 hdlc_build_address(const hdlc_address_t p_from[static 1],
                    array_t p_to[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
-	ASSERT_DEVELOP(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
+	ASSERT(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
+	ASSERT(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
 
 	const size_t free = array_free(p_to);
 	RETURN_IF_FALSE(free != (size_t)~0, STATUS_ARRAY_INVALID_PARAMETER);
@@ -173,8 +173,8 @@ STATIC status_t
 hdlc_decode_address(array_t p_from[static const 1],
                     hdlc_address_t p_to[static 1],
                     const size_t size) {
-	ASSERT_DEVELOP(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
-	ASSERT_DEVELOP(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
+	ASSERT(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
+	ASSERT(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
 	RETURN_IF_FALSE(!(size == 0), STATUS_HDLC_INVALID_PARAMETER);
 	RETURN_IF_FALSE(!(size > sizeof(uint32_t)), STATUS_HDLC_INVALID_PARAMETER);
 
@@ -202,7 +202,7 @@ hdlc_push_address(const hdlc_address_t p_from[static const 1],
 status_t
 hdlc_pull_address(array_t p_from[static 1],
                   hdlc_address_t p_to[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
+	ASSERT(p_from != NULL, STATUS_HDLC_INVALID_PARAMETER);
 
 	size_t size = 1;
 	array_t temp = p_from[0];

@@ -26,7 +26,7 @@ extern "C"
 
 #if defined (DEBUG)
 
-#define ASSERT_DEVELOP(CONDITION, RETURN) \
+#define ASSERT(CONDITION, RETURN) \
 	RETURN_IF_FALSE(CONDITION, RETURN)
 
 #define PRINT(...) \
