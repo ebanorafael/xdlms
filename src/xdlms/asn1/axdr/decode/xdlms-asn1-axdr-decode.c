@@ -158,7 +158,7 @@ xdlms_asn1_axdr_decode_validate(
  *******************************************************************/
 
 STATIC xdlms_asn1_axdr_type_t xdlms_asn1_axdr_decode_tag(
-  const array_t p_from[static 1]) {
+  array_t p_from[static 1]) {
 	xdlms_asn1_axdr_type_t tag = XDLMS_ASN1_AXDR_TYPE_NULL_DATA;
 
 	status_t status = STATUS_SUCCESS;
@@ -179,12 +179,12 @@ STATIC xdlms_asn1_axdr_type_t xdlms_asn1_axdr_decode_tag(
 }
 
 STATIC size_t xdlms_asn1_axdr_decode_len(
-  const array_t p_from[static 1]) {
+  array_t p_from[static 1]) {
 
 	size_t len = 0;
 	status_t status = STATUS_SUCCESS;
 
-	status = array_pull_hton(p_from, (uint8_t *) &len, sizeof(uint8_t));
+	status = array_pull_hton(p_from, (uint8_t *)&len, sizeof(uint8_t));
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, (size_t) ~0);
 
 	if ((len & 0x80) == 0) {
@@ -203,7 +203,7 @@ STATIC size_t xdlms_asn1_axdr_decode_len(
 }
 
 STATIC status_t xdlms_asn1_axdr_decode_standard(
-  const array_t p_from[static 1],
+  array_t p_from[static 1],
   xdlms_asn1_axdr_resource_t p_to[static 1]) {
 	ASSERT(p_to != NULL, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 
@@ -229,7 +229,7 @@ STATIC status_t xdlms_asn1_axdr_decode_standard(
 }
 
 STATIC status_t xdlms_asn1_axdr_decode_sequence_of(
-  const array_t p_from[static 1],
+  array_t p_from[static 1],
   xdlms_asn1_axdr_resource_t p_to[static 1]) {
 	ASSERT(p_to != NULL, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 

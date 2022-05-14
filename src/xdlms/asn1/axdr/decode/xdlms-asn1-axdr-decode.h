@@ -103,23 +103,23 @@ xdlms_asn1_axdr_decode_list(
 
 STATIC xdlms_asn1_axdr_type_t
 xdlms_asn1_axdr_decode_tag(
-  const array_t p_from[static 1]
+  array_t p_from[static 1]
 );
 
 STATIC size_t
 xdlms_asn1_axdr_decode_len(
-  const array_t p_from[static 1]
+  array_t p_from[static 1]
 );
 
 STATIC status_t
 xdlms_asn1_axdr_decode_standard(
-  const array_t p_from[static 1],
+  array_t p_from[static 1],
   xdlms_asn1_axdr_resource_t p_to[static 1]
 );
 
 STATIC status_t
 xdlms_asn1_axdr_decode_sequence_of(
-  const array_t p_from[static 1],
+  array_t p_from[static 1],
   xdlms_asn1_axdr_resource_t p_to[static 1]
 );
 

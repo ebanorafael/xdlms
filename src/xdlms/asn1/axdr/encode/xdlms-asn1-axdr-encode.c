@@ -183,7 +183,7 @@ xdlms_asn1_axdr_encode(
 
 STATIC status_t xdlms_asn1_axdr_encode_tag(
   const xdlms_asn1_axdr_type_t tag,
-  const array_t p_to[static 1]) {
+  array_t p_to[static 1]) {
 	RETURN_IF_FALSE(tag != XDLMS_ASN1_AXDR_TYPE_INVALID_1,
 	                   STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	RETURN_IF_FALSE(tag != XDLMS_ASN1_AXDR_TYPE_INVALID_2,
@@ -195,7 +195,7 @@ STATIC status_t xdlms_asn1_axdr_encode_tag(
 	RETURN_IF_FALSE(tag != XDLMS_ASN1_AXDR_TYPE_MAX,
 	                   STATUS_ASN1_AXDR_INVALID_PARAMETER);
 
-	status_t status = array_push_hton((uint8_t *) &tag, p_to, sizeof(uint8_t));
+	status_t status = array_push_hton((uint8_t *)&tag, p_to, sizeof(uint8_t));
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, STATUS_ASN1_AXDR_ENCODE_FAIL);
 
 	return STATUS_SUCCESS;
@@ -203,7 +203,7 @@ STATIC status_t xdlms_asn1_axdr_encode_tag(
 
 STATIC status_t xdlms_asn1_axdr_encode_multi_byte_len(
   const size_t from,
-  const array_t p_to[static 1]) {
+  array_t p_to[static 1]) {
 	RETURN_IF_FALSE(from > 127, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 
 	size_t len = 0x80;
@@ -237,7 +237,7 @@ STATIC status_t xdlms_asn1_axdr_encode_multi_byte_len(
 
 STATIC status_t xdlms_asn1_axdr_encode_len(
   const size_t from,
-  const array_t p_to[static 1]) {
+  array_t p_to[static 1]) {
 	if (from < 0x80) {
 		const status_t status = array_push_hton((uint8_t *) &from,
 		                                        p_to,
@@ -251,7 +251,7 @@ STATIC status_t xdlms_asn1_axdr_encode_len(
 
 STATIC status_t xdlms_asn1_axdr_encode_standard(
   const uint8_t p_from[static 1],
-  const array_t p_to[static 1],
+  array_t p_to[static 1],
   const xdlms_asn1_axdr_type_t tag) {
 
 	const size_t size = xdlms_asn1_axdr_get_size(tag);
@@ -259,7 +259,7 @@ STATIC status_t xdlms_asn1_axdr_encode_standard(
 	RETURN_IF_FALSE(size != 0xff, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 
 	status_t status = STATUS_SUCCESS;
-	status |= array_push_hton((uint8_t *) &tag, p_to, sizeof(uint8_t));
+	status |= array_push_hton((uint8_t *)&tag, p_to, sizeof(uint8_t));
 	status |= array_push_hton(p_from, p_to, size);
 
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, STATUS_ASN1_AXDR_ENCODE_FAIL);
@@ -267,7 +267,7 @@ STATIC status_t xdlms_asn1_axdr_encode_standard(
 }
 
 STATIC status_t xdlms_asn1_axdr_encode_sequence_of(
-  const array_t p_to[static 1],
+  array_t p_to[static 1],
   const xdlms_asn1_axdr_type_t type,
   const size_t size) {
 

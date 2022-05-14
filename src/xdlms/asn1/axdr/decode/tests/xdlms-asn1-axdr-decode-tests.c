@@ -623,7 +623,7 @@ void xdlms_asn1_axdr_decode_tests(void) {
 		TEST_ASSERT_EQUAL(to.meta.len, sizeof(int64_t));
 		TEST_ASSERT_EQUAL(out, 0x0807060504030201);
 
-		MODULE_TRACE(1, "Decoded (%u bytes): 0x%016llx.\n", sizeof(out), out);
+//		MODULE_TRACE(0, "Decoded (%u bytes): 0x%016llx.\n", sizeof(out), out);
 	}
 
 	/* Tests end */

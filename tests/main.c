@@ -100,23 +100,23 @@ int main(void) {
 	if (1) { RUN_TEST(array_push_hton_tests); }
 
 	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_tag_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_multi_byte_len_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_len_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_standard_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_sequence_of_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_sequence_of_bytes_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_compact_array_tests); }
-	if (0) { RUN_TEST(xdlms_ans1_axdr_encode_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_encode_list_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_multi_byte_len_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_len_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_standard_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_sequence_of_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_sequence_of_bytes_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_compact_array_tests); }
+	if (1) { RUN_TEST(xdlms_ans1_axdr_encode_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_encode_list_tests); }
 
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_tag_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_len_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_standard_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_sequence_of_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_sequence_of_bytes_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_validate_tests); }
-	if (0) { RUN_TEST(xdlms_asn1_axdr_decode_list_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_tag_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_len_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_standard_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_sequence_of_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_sequence_of_bytes_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_validate_tests); }
+	if (1) { RUN_TEST(xdlms_asn1_axdr_decode_list_tests); }
 
 	if (1) { RUN_TEST(hdlc_parse_address_tests); }
 	if (1) { RUN_TEST(hdlc_decode_address_tests); }

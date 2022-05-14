@@ -235,31 +235,31 @@ xdlms_asn1_axdr_encode_list(
 STATIC status_t
 xdlms_asn1_axdr_encode_tag(
   const xdlms_asn1_axdr_type_t tag,
-  const array_t p_to[static 1]
+  array_t p_to[static 1]
 );
 
 STATIC status_t
 xdlms_asn1_axdr_encode_multi_byte_len(
   const size_t from,
-  const array_t p_to[static 1]
+  array_t p_to[static 1]
 );
 
 STATIC status_t
 xdlms_asn1_axdr_encode_len(
   const size_t from,
-  const array_t p_to[static 1]
+  array_t p_to[static 1]
 );
 
 STATIC status_t
 xdlms_asn1_axdr_encode_standard(
   const uint8_t p_from[static 1],
-  const array_t p_to[static 1],
+  array_t p_to[static 1],
   const xdlms_asn1_axdr_type_t tag
 );
 
 STATIC status_t
 xdlms_asn1_axdr_encode_sequence_of(
-  const array_t p_to[static 1],
+  array_t p_to[static 1],
   const xdlms_asn1_axdr_type_t type,
   const size_t size
 );

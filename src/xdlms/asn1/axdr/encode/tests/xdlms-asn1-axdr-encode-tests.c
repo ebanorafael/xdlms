@@ -634,7 +634,7 @@ void xdlms_asn1_axdr_encode_sequence_of_bytes_tests(void) {
 		                                                 XDLMS_ASN1_AXDR_TYPE_VISIBLE_STRING);
 		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-		int diff = memcmp((void *)&in[2], (void *)&out, ARRAY_SIZE(in));
+		int diff = memcmp((void *)&in[0], (void *)&out[2], ARRAY_SIZE(in));
 
 		TEST_ASSERT_EQUAL(out[0], XDLMS_ASN1_AXDR_TYPE_VISIBLE_STRING);
 		TEST_ASSERT_EQUAL(out[1], 13);
