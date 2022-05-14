@@ -100,7 +100,7 @@ hdlc_build_address(const hdlc_address_t p_from[static 1],
 	ASSERT_DEVELOP(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
 
 	const size_t free = array_free(p_to);
-	RETURN_IF_FALSE(free != (size_t)-1, STATUS_ARRAY_INVALID_PARAMETER);
+	RETURN_IF_FALSE(free != (size_t)~0, STATUS_ARRAY_INVALID_PARAMETER);
 	RETURN_IF_FALSE(!(free < p_from->size), STATUS_HDLC_BUFFER_OVERFLOW);
 
 	uint8_t to[sizeof(uint32_t)] = { 0 };
@@ -136,17 +136,17 @@ hdlc_build_address(const hdlc_address_t p_from[static 1],
 STATIC uint32_t
 hdlc_parse_address(array_t p_from[static 1],
                    const size_t size) {
-	RETURN_IF_FALSE(!(size > sizeof(uint32_t)), (uint32_t)-1);
+	RETURN_IF_FALSE(!(size > sizeof(uint32_t)), (uint32_t)~0);
 
 	uint32_t addr = 0;
 	uint32_t temp = 0;
 
 	status_t status = array_pull_hton(p_from, (uint8_t *)&temp, size);
-	RETURN_IF_FALSE(status == STATUS_SUCCESS, (uint32_t)-1);
+	RETURN_IF_FALSE(status == STATUS_SUCCESS, (uint32_t)~0);
 
 	switch(size) {
 		default: {
-			addr = (uint32_t)-1;
+			addr = (uint32_t)~0;
 			break;
 		}
 		case(sizeof(uint8_t)): {
@@ -179,15 +179,15 @@ hdlc_decode_address(array_t p_from[static const 1],
 	RETURN_IF_FALSE(!(size > sizeof(uint32_t)), STATUS_HDLC_INVALID_PARAMETER);
 
 	static const hdlc_address_t hdlc_address_invalid = {
-	  .address = (uint32_t)-1,
-	  .size = (size_t)-1
+	  .address = (uint32_t)~0,
+	  .size = (size_t)~0
 	};
 
 	p_to[0] = hdlc_address_invalid;
 	RETURN_IF_FALSE((p_from->p_array[size - 1] & 0x01) != 0, STATUS_HDLC_ADDRESS_INVALID);
 
 	uint32_t address = hdlc_parse_address(p_from, size);
-	RETURN_IF_FALSE(address != (uint32_t)-1, STATUS_HDLC_ADDRESS_PARSE_FAIL);
+	RETURN_IF_FALSE(address != (uint32_t)~0, STATUS_HDLC_ADDRESS_PARSE_FAIL);
 
 	p_to[0] = (hdlc_address_t){ .address = address, .size = size };
 	return STATUS_SUCCESS;

@@ -70,7 +70,7 @@ void array_used_tests(void) {
 		size_t size = 0;
 
 		size = array_used(NULL);
-		TEST_ASSERT_EQUAL(size, (size_t)-1);
+		TEST_ASSERT_EQUAL(size, (size_t)~0);
 	}
 
   /* End of assertion test cases */
@@ -82,7 +82,7 @@ void array_used_tests(void) {
 		const array_t from = { .p_array = NULL, .size = 1, .end = 2, .start = 0 };
 
 		size = array_used(&from);
-		TEST_ASSERT_EQUAL(size, (size_t)-1);
+		TEST_ASSERT_EQUAL(size, (size_t)~0);
 	}
 
 	if (1) { /* invalid parameter */
@@ -90,7 +90,7 @@ void array_used_tests(void) {
 		const array_t from = { .p_array = NULL, .size = 1, .end = 1, .start = 2 };
 
 		size = array_used(&from);
-		TEST_ASSERT_EQUAL(size, (size_t)-1);
+		TEST_ASSERT_EQUAL(size, (size_t)~0);
 	}
 
 	if (1) { /* success */
@@ -125,7 +125,7 @@ void array_free_tests(void) {
 	  size_t size = 0;
 
 	  size = array_free(NULL);
-		TEST_ASSERT_EQUAL(size, (size_t)-1);
+		TEST_ASSERT_EQUAL(size, (size_t)~0);
 	}
 
   /* End of assertion test cases */
@@ -137,7 +137,7 @@ void array_free_tests(void) {
 		const array_t from = { .p_array = NULL, .size = 1, .end = 2, .start = 0 };
 
 		size = array_free(&from);
-		TEST_ASSERT_EQUAL(size, (size_t)-1);
+		TEST_ASSERT_EQUAL(size, (size_t)~0);
 	}
 
 	if (1) { /* success */

@@ -81,8 +81,8 @@ arrays_validate(const array_t p_from[static 1],
 	const size_t from_size = array_used(p_from);
 	const size_t to_size = array_free(p_to);
 
-	RETURN_IF_FALSE(from_size != (size_t)-1, STATUS_ARRAY_INVALID_PARAMETER);
-	RETURN_IF_FALSE(to_size != (size_t)-1, STATUS_ARRAY_INVALID_PARAMETER);
+	RETURN_IF_FALSE(from_size != (size_t)~0, STATUS_ARRAY_INVALID_PARAMETER);
+	RETURN_IF_FALSE(to_size != (size_t)~0, STATUS_ARRAY_INVALID_PARAMETER);
 
 	RETURN_IF_FALSE(!(size > from_size), STATUS_ARRAY_BUFFER_OVERFLOW);
 	RETURN_IF_FALSE(!(size > to_size), STATUS_ARRAY_BUFFER_OVERFLOW);
@@ -112,23 +112,23 @@ array_serialize(const array_t p_from[static 1],
 
 size_t
 array_used(const array_t p_from[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, (size_t)-1);
+	ASSERT_DEVELOP(p_from != NULL, (size_t)~0);
 
 	/* end must not be larger than size */
-	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)-1);
+	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)~0);
 
 	/* start must not be larger than end */
-	RETURN_IF_FALSE(!(p_from->start > p_from->end), (size_t)-1);
+	RETURN_IF_FALSE(!(p_from->start > p_from->end), (size_t)~0);
 
 	return p_from->end - p_from->start;
 }
 
 size_t
 array_free(const array_t p_from[static 1]) {
-	ASSERT_DEVELOP(p_from != NULL, (size_t)-1);
+	ASSERT_DEVELOP(p_from != NULL, (size_t)~0);
 
 	/* end must not be larger than size */
-	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)-1);
+	RETURN_IF_FALSE(!(p_from->end > p_from->size), (size_t)~0);
 
 	return p_from->size - p_from->end;
 }
@@ -138,7 +138,7 @@ array_drop(array_t p_from[static 1],
            const size_t size) {
 	const size_t used = array_used(p_from);
 
-	RETURN_IF_FALSE(used != (size_t)-1, STATUS_ARRAY_INVALID_PARAMETER);
+	RETURN_IF_FALSE(used != (size_t)~0, STATUS_ARRAY_INVALID_PARAMETER);
 	RETURN_IF_FALSE(!(size > used), STATUS_ARRAY_BUFFER_OVERFLOW);
 
 	p_from->start += size;

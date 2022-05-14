@@ -75,7 +75,7 @@ void hdlc_parse_address_tests(void) {
     array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
 
     uint32_t address = hdlc_parse_address(&from, 0);
-    TEST_ASSERT_EQUAL(address, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(address, (uint32_t)~0);
   }
 
   if (1) { /* invalid size: 3 */
@@ -83,12 +83,12 @@ void hdlc_parse_address_tests(void) {
     array_t from = ARRAY_USED(data, ARRAY_SIZE(data));
 
     uint32_t address = hdlc_parse_address(&from, ARRAY_SIZE(data));
-    TEST_ASSERT_EQUAL(address, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(address, (uint32_t)~0);
   }
 
 	if (1) { /* invalid size: 5 */
     uint32_t address = hdlc_parse_address(NULL, sizeof(uint32_t) + 1);
-    TEST_ASSERT_EQUAL(address, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(address, (uint32_t)~0);
   }
 
   if (1) { /* success */
@@ -171,8 +171,8 @@ void hdlc_decode_address_tests(void) {
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_INVALID);
 
-    TEST_ASSERT_EQUAL(to.address, (uint32_t)-1);
-    TEST_ASSERT_EQUAL(to.size, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(to.address, (uint32_t)~0);
+    TEST_ASSERT_EQUAL(to.size, (uint32_t)~0);
 	}
 
 	if (1) { /* fail: invalid address size (3) */
@@ -183,8 +183,8 @@ void hdlc_decode_address_tests(void) {
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_PARSE_FAIL);
 
-    TEST_ASSERT_EQUAL(to.address, (uint32_t)-1);
-    TEST_ASSERT_EQUAL(to.size, (uint32_t)-1);
+    TEST_ASSERT_EQUAL(to.address, (uint32_t)~0);
+    TEST_ASSERT_EQUAL(to.size, (uint32_t)~0);
 	}
 
 	if (1) { /* fail: invalid address size (3) */
@@ -283,7 +283,7 @@ void hdlc_build_address_tests(void) {
   /* Tests start*/
 
   if (1) { /* fail: invalid array */
-    const hdlc_address_t from = { .address = (uint32_t)-1, .size = 3 };
+    const hdlc_address_t from = { .address = (uint32_t)~0, .size = 3 };
     array_t to = { .start = 5, .end = 2, .size = 1 };
 
     status_t status = hdlc_build_address(&from, &to);
@@ -291,7 +291,7 @@ void hdlc_build_address_tests(void) {
   }
 
   if (1) { /* fail: not enought bytes in array */
-    const hdlc_address_t from = { .address = (uint32_t)-1, .size = 3 };
+    const hdlc_address_t from = { .address = (uint32_t)~0, .size = 3 };
     array_t to = ARRAY_FREE(NULL, 1);
 
     status_t status = hdlc_build_address(&from, &to);
