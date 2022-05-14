@@ -191,18 +191,28 @@ array_pull(array_t p_from[static 1],
 
 status_t
 array_push_hton(const uint8_t p_from[static 1],
-                const array_t p_to[static 1],
+                array_t p_to[static 1],
                 const size_t size) {
 	array_t from = ARRAY_USED(p_from, size);
-	return array_serialize(&from, p_to, size);
+
+	status_t status = array_serialize(&from, p_to, size);
+	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
+
+	p_to->end += size;
+	return STATUS_SUCCESS;
 }
 
 status_t
-array_pull_hton(const array_t p_from[static 1],
+array_pull_hton(array_t p_from[static 1],
                 const uint8_t p_to[static 1],
                 size_t size) {
 	array_t to = ARRAY_FREE(p_to, size);
-	return array_serialize(p_from, &to, size);
+
+	status_t status = array_serialize(p_from, &to, size);
+	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
+
+	p_from->start += size;
+	return STATUS_SUCCESS;
 }
 
 #ifdef UNIT_TESTS

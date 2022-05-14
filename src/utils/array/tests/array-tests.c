@@ -512,10 +512,10 @@ void array_push_hton_tests(void) {
 		status = array_push_hton((uint8_t *)&from2, &to, sizeof(from2));
 		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-		TEST_ASSERT_EQUAL(array[0], 0x08);
-		TEST_ASSERT_EQUAL(array[1], 0x07);
-		TEST_ASSERT_EQUAL(array[2], 0x06);
-		TEST_ASSERT_EQUAL(array[3], 0x05);
+		TEST_ASSERT_EQUAL(array[2], 0x08);
+		TEST_ASSERT_EQUAL(array[3], 0x07);
+		TEST_ASSERT_EQUAL(array[4], 0x06);
+		TEST_ASSERT_EQUAL(array[5], 0x05);
 	}
 
   /* Tests end */

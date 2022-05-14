@@ -199,7 +199,7 @@ array_pull(array_t p_from[static 1],
  */
 status_t
 array_push_hton(const uint8_t p_from[static 1],
-                const array_t p_to[static 1],
+                array_t p_to[static 1],
                 const size_t size);
 
 /*!
@@ -210,7 +210,7 @@ array_push_hton(const uint8_t p_from[static 1],
  * @return Status of the operation
  */
 status_t
-array_pull_hton(const array_t p_from[static 1],
+array_pull_hton(array_t p_from[static 1],
                 const uint8_t p_to[static 1],
                 size_t size);
 
