@@ -32,6 +32,11 @@
 									<listOptionValue builtIn="false" value="../../../src/utils"/>
 									<listOptionValue builtIn="false" value="../../../src/utils/array"/>
 									<listOptionValue builtIn="false" value="../../../src/utils/array/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/encode"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/encode/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/decode"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/decode/tests"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address/tests"/>
 								</option>
@@ -64,7 +69,7 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="lib"/>
-						<entry excluding="asn1/axdr/tests|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
+						<entry excluding="asn1/axdr/decode/tests|asn1/axdr/encode/tests|asn1/axdr/tests|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -109,7 +114,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="asn1/axdr/tests|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
+						<entry excluding="asn1/axdr/decode/tests|asn1/axdr/encode/tests|asn1/axdr/tests|application/assynchronous|helpers/storage/measures.c|helpers/storage/tests/app_backup-tests.c|application/action_schedule/action_schedule_application.c|helpers/json_format/tests/json_format-tests.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

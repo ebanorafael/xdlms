@@ -85,7 +85,12 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/utils/array/tests/array-tests.h</locationURI>
 		</link>
 		<link>
-			<name>sources/asn1/axdr/tests</name>
+			<name>sources/asn1/axdr/decode</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/encode</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -93,11 +98,6 @@
 			<name>sources/asn1/axdr/xdlms-asn1-axdr.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/xdlms-asn1-axdr.c</locationURI>
-		</link>
-		<link>
-			<name>sources/asn1/axdr/xdlms-asn1-axdr.h</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/xdlms-asn1-axdr.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/address/hdlc-address.c</name>
@@ -130,14 +130,34 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/sys/status.h</locationURI>
 		</link>
 		<link>
-			<name>sources/asn1/axdr/tests/xdlms-asn1-axdr-tests.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/tests/xdlms-asn1-axdr-tests.c</locationURI>
+			<name>sources/asn1/axdr/decode/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/asn1/axdr/tests/xdlms-asn1-axdr-tests.h</name>
+			<name>sources/asn1/axdr/decode/xdlms-asn1-axdr-decode.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/tests/xdlms-asn1-axdr-tests.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/decode/xdlms-asn1-axdr-decode.c</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/decode/xdlms-asn1-axdr-decode.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/decode/xdlms-asn1-axdr-decode.h</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/encode/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/encode/xdlms-asn1-axdr-encode.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/xdlms-asn1-axdr-encode.c</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/encode/xdlms-asn1-axdr-encode.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/xdlms-asn1-axdr-encode.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/address/tests/hdlc-address-tests.c</name>
@@ -148,6 +168,26 @@
 			<name>sources/hdlc/address/tests/hdlc-address-tests.h</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/address/tests/hdlc-address-tests.h</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.h</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.h</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
