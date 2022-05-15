@@ -70,11 +70,6 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
 			<name>sources/hdlc/sys</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -118,21 +113,6 @@
 			<name>sources/hdlc/address/tests</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/crc16/crc16</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/crc16/crc16-ccitt.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/crc16-ccitt.c</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/crc16/crc16-ccitt.h</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/crc16-ccitt.h</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/sys/log.c</name>
@@ -190,11 +170,6 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/address/tests/hdlc-address-tests.h</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16/tests</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
 			<name>sources/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.c</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.c</locationURI>
@@ -213,16 +188,6 @@
 			<name>sources/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.h</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.h</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/crc16/crc16/tests/crc16-ccitt-tests.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/tests/crc16-ccitt-tests.c</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/crc16/crc16/tests/crc16-ccitt-tests.h</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/tests/crc16-ccitt-tests.h</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

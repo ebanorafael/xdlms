@@ -36,7 +36,6 @@
 #include "array-tests.h"
 #include "xdlms-asn1-axdr-encode-tests.h"
 #include "xdlms-asn1-axdr-decode-tests.h"
-#include "crc16-ccitt-tests.h"
 #include "hdlc-address-tests.h"
 
 #ifdef UNIT_TESTS
@@ -134,11 +133,6 @@ int main(void) {
 	if (1) { RUN_TEST(hdlc_pull_address_tests); }
 	if (1) { RUN_TEST(hdlc_build_address_tests); }
 	if (1) { RUN_TEST(hdlc_push_address_tests); }
-
-	PRINT("\n===== CRC-16 CCITT lib. Tests =====\n\n");
-
-	if (1) { RUN_TEST(crc16_ccitt_tests); }
-	if (1) { RUN_TEST(crc16_ccitt_update_tests); }
 
 	return UNITY_END();
 }

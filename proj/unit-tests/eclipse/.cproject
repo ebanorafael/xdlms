@@ -39,8 +39,6 @@
 									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/decode/tests"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address/tests"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/crc16"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/crc16/tests"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1263975717" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIT_TESTS"/>
