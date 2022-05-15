@@ -14,15 +14,12 @@ extern "C"
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
-
+	
 /*******************************************************************
  * INCLUDES
  *******************************************************************/
 
 /* System functioning includes start */
-
-#include <stdint.h>
-#include <stddef.h>
 
 #ifdef UNIT_TESTS
 
@@ -30,6 +27,7 @@ extern "C"
 
 #include "status.h"
 #include "array.h"
+#include "xdlms-hdlc.h"
 
 /* System functioning includes end */
 
@@ -44,11 +42,6 @@ extern "C"
 /*******************************************************************
  * EXTERNED TYPES
  *******************************************************************/
-
-typedef struct hdlc_address_t {
-	uint32_t address;
-	size_t size;
-} hdlc_address_t;
 
 #ifdef UNIT_TESTS
 
@@ -71,39 +64,21 @@ typedef struct hdlc_address_t {
  *******************************************************************/
 
 status_t
-hdlc_push_address(
-  const hdlc_address_t p_from[static const 1],
-  array_t p_to[static 1]
-);
-
-status_t
-hdlc_pull_address(
-  array_t p_from[static 1],
-  hdlc_address_t p_to[static 1]
+xdlms_hdlc_parse_mac(
+	array_t p_from[static const 1],
+	hdlc_mac_info_t p_to[static 1]
 );
 
 #ifdef UNIT_TESTS
 
-STATIC uint32_t
-hdlc_parse_address(
-  array_t p_from[static 1],
-  const size_t size
-);
-
 STATIC status_t
-hdlc_decode_address(
-  array_t p_from[static const 1],
-  hdlc_address_t p_to[static 1],
-  const size_t size);
-
-STATIC status_t
-hdlc_build_address(
-  const hdlc_address_t p_from[static 1],
-  array_t p_to[static 1]
+xdlms_hdlc_parse_mac_addresses(
+	array_t p_from[static 1],
+	hdlc_mac_address_t p_to[static 1]
 );
 
 #endif /* UNIT_TESTS */
-
+ 
 #ifdef __cplusplus
 }
 #endif /*  __cplusplus */

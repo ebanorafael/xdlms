@@ -14,26 +14,24 @@ extern "C"
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
-
+	
 /*******************************************************************
  * INCLUDES
  *******************************************************************/
 
 /* System functioning includes start */
 
-#include <stdint.h>
-#include <stddef.h>
+#include <stdbool.h>
 
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
 
-#include "status.h"
-#include "array.h"
-
 /* System functioning includes end */
 
 /* Module functioning includes start */
+
+#include "hdlc-address.h"
 
 #ifdef UNIT_TESTS
 
@@ -45,10 +43,26 @@ extern "C"
  * EXTERNED TYPES
  *******************************************************************/
 
-typedef struct hdlc_address_t {
-	uint32_t address;
-	size_t size;
-} hdlc_address_t;
+typedef enum hdlc_defs_t {
+	HDLC_FRAME_FORMAT = 0xa000,
+	HDLC_FRAME_SEGMENT = 1 << 12,
+	HDLC_FRAME_LEN_MASK = 0x07f,
+
+} hdlc_defs_t;
+
+typedef uint8_t hdlc_mac_control_t;
+
+typedef struct hdlc_mac_address_t {
+	hdlc_address_t src;
+	hdlc_address_t dst;
+} hdlc_mac_address_t;
+
+typedef struct hdlc_mac_info_t {
+	hdlc_mac_address_t address;
+	hdlc_mac_control_t control;
+	bool is_segmented;
+	uint8_t *p_data;
+} hdlc_mac_info_t;
 
 #ifdef UNIT_TESTS
 
@@ -70,40 +84,10 @@ typedef struct hdlc_address_t {
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
-status_t
-hdlc_push_address(
-  const hdlc_address_t p_from[static const 1],
-  array_t p_to[static 1]
-);
-
-status_t
-hdlc_pull_address(
-  array_t p_from[static 1],
-  hdlc_address_t p_to[static 1]
-);
-
 #ifdef UNIT_TESTS
 
-STATIC uint32_t
-hdlc_parse_address(
-  array_t p_from[static 1],
-  const size_t size
-);
-
-STATIC status_t
-hdlc_decode_address(
-  array_t p_from[static const 1],
-  hdlc_address_t p_to[static 1],
-  const size_t size);
-
-STATIC status_t
-hdlc_build_address(
-  const hdlc_address_t p_from[static 1],
-  array_t p_to[static 1]
-);
-
 #endif /* UNIT_TESTS */
-
+ 
 #ifdef __cplusplus
 }
 #endif /*  __cplusplus */

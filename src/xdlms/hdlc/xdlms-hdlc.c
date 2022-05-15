@@ -1,19 +1,21 @@
-/// @file
-
-#pragma once
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif /*  __cplusplus */
+///@file
 
 /*******************************************************************
- * EXTERNED DEFINES
+ * PRIVATE DEFINES
  *******************************************************************/
+
+/* Module functioning defines start */
 
 #ifdef UNIT_TESTS
 
+#else
+
+/*! @brief Hides internal function definitions when not in unit test environment */
+#define STATIC    static
+
 #endif /* UNIT_TESTS */
+
+/* Module functioning defines end */
 
 /*******************************************************************
  * INCLUDES
@@ -21,15 +23,11 @@ extern "C"
 
 /* System functioning includes start */
 
-#include <stdint.h>
-#include <stddef.h>
-
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
 
-#include "status.h"
-#include "array.h"
+#include "header.h"
 
 /* System functioning includes end */
 
@@ -42,22 +40,7 @@ extern "C"
 /* Module functioning includes end */
 
 /*******************************************************************
- * EXTERNED TYPES
- *******************************************************************/
-
-typedef struct hdlc_address_t {
-	uint32_t address;
-	size_t size;
-} hdlc_address_t;
-
-#ifdef UNIT_TESTS
-
-#else /* UNIT_TESTS */
-
-#endif /* UNIT_TESTS */
-
-/*******************************************************************
- * EXTERNED DATA
+ * PRIVATE TYPES
  *******************************************************************/
 
 #ifdef UNIT_TESTS
@@ -67,43 +50,31 @@ typedef struct hdlc_address_t {
 #endif /* UNIT_TESTS */
 
 /*******************************************************************
- * EXTERNED FUNCTIONS
+ * PRIVATE PROTOTYPES
  *******************************************************************/
-
-status_t
-hdlc_push_address(
-  const hdlc_address_t p_from[static const 1],
-  array_t p_to[static 1]
-);
-
-status_t
-hdlc_pull_address(
-  array_t p_from[static 1],
-  hdlc_address_t p_to[static 1]
-);
 
 #ifdef UNIT_TESTS
 
-STATIC uint32_t
-hdlc_parse_address(
-  array_t p_from[static 1],
-  const size_t size
-);
-
-STATIC status_t
-hdlc_decode_address(
-  array_t p_from[static const 1],
-  hdlc_address_t p_to[static 1],
-  const size_t size);
-
-STATIC status_t
-hdlc_build_address(
-  const hdlc_address_t p_from[static 1],
-  array_t p_to[static 1]
-);
+#else /* UNIT_TESTS */
 
 #endif /* UNIT_TESTS */
 
-#ifdef __cplusplus
-}
-#endif /*  __cplusplus */
+/*******************************************************************
+ * PRIVATE DATA
+ *******************************************************************/
+
+#ifdef UNIT_TESTS
+
+#else /* UNIT_TESTS */
+
+#endif /* UNIT_TESTS */
+
+/*******************************************************************
+ * FUNCTIONS
+ *******************************************************************/
+
+#ifdef UNIT_TESTS
+
+#else /* UNIT_TESTS */
+
+#endif /* UNIT_TESTS */
