@@ -121,30 +121,24 @@ void crc16_ccitt_update_tests(void) {
 
   /* Tests start*/
 
-	if (1) {
-		const uint8_t from[] = { 0x03, 0x3f };
-		const uint32_t expected =
-			crc16_ccitt_partial((uint8_t *)&from[0],
-			                   ARRAY_SIZE(from),
-			                   0xffff);
+	if (1) { /* update from complete buffer, each byte */
+		const uint8_t from1[] = { 0x03, 0x3f };
+		const uint32_t expected1 =
+			crc16_ccitt_complete((uint8_t *)&from1[0], ARRAY_SIZE(from1));
 
 		uint32_t crc = 0xffff;
 		size_t index = 0;
 
-		for (; index < ARRAY_SIZE(from); index++) {
-			crc = crc16_ccitt_partial((uint8_t *)&from[index], 1, crc);
-
-			if (~crc == expected) {
-				break; /* should not reach here */
-			}
+		for (; index < ARRAY_SIZE(from1); index++) {
+			crc = crc16_ccitt_partial((uint8_t *)&from1[index], 1, crc);
 		}
 
-		TEST_ASSERT_EQUAL(index, ARRAY_SIZE(from));
-		TEST_ASSERT_EQUAL(crc, expected);
-	}
+		crc = ~crc;
 
-	if (1) {
-		const uint8_t from[] = {
+		TEST_ASSERT_EQUAL(index, ARRAY_SIZE(from1));
+		TEST_ASSERT_EQUAL((uint16_t)crc, (uint16_t)expected1);
+
+		const uint8_t from2[] = {
 			0xA8, 0x6C, 0x03, 0x17, 0x56, 0x0D, 0x71, 0xE6,
 			0xE6, 0x00, 0xC1, 0x02, 0xC1, 0x00, 0x14, 0x00,
 			0x00, 0x0D, 0x00, 0x00, 0xFF, 0x07, 0x00, 0x00,
@@ -160,24 +154,65 @@ void crc16_ccitt_update_tests(void) {
 			0x03, 0x02, 0x03, 0x09, 0x01, 0x04, 0x09, 0x0C,
 			0x07, 0xE2,
 		};
-		const uint32_t expected =
-			crc16_ccitt_partial((uint8_t *)&from[0],
-			                   ARRAY_SIZE(from),
-			                   0xffff);
+		const uint32_t expected2 =
+			crc16_ccitt_complete((uint8_t *)&from2[0], ARRAY_SIZE(from2));
 
-		uint32_t crc = 0xffff;
-		size_t index = 0;
+		crc = 0xffff;
+		index = 0;
 
-		for (; index < ARRAY_SIZE(from); index++) {
-			crc = crc16_ccitt_partial((uint8_t *)&from[index], 1, crc);
-
-			if (~crc == expected) {
-				break; /* should not reach here */
-			}
+		for (; index < ARRAY_SIZE(from2); index++) {
+			crc = crc16_ccitt_partial((uint8_t *)&from2[index], 1, crc);
 		}
 
-		TEST_ASSERT_EQUAL(index, ARRAY_SIZE(from));
-		TEST_ASSERT_EQUAL(crc, expected);
+		crc = ~crc;
+
+		TEST_ASSERT_EQUAL(index, ARRAY_SIZE(from2));
+		TEST_ASSERT_EQUAL((uint16_t)crc, (uint16_t)expected2);
+	}
+
+	if (1) {
+		const uint8_t from1[] = {
+			0xA8, 0x6C, 0x03, 0x17, 0x56, 0x0D, 0x71, 0xE6,
+			0xE6, 0x00, 0xC1, 0x02, 0xC1, 0x00, 0x14, 0x00,
+			0x00, 0x0D, 0x00, 0x00,
+		};
+		const uint8_t from2[] = {
+			0xFF, 0x07, 0x00, 0x00,
+			0x00, 0x00, 0x00, 0x01, 0x5B, 0x01, 0x08, 0x02,
+			0x03, 0x09, 0x01, 0x01, 0x09, 0x0C, 0x07, 0xE2,
+			0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x01,
+			0x2C, 0x00, 0x09, 0x01, 0x01, 0x02, 0x03, 0x09,
+			0x01, 0x02, 0x09, 0x0C, 0x07, 0xE2, 0x05, 0x15,
+		};
+		const uint8_t from3[] = {
+			0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x80,
+			0x09, 0x01, 0x02, 0x02, 0x03, 0x09, 0x01, 0x03,
+			0x09, 0x0C, 0x07, 0xE2, 0x05, 0x19, 0x05, 0x00,
+			0x00, 0x00, 0x00, 0x00, 0xF0, 0x80, 0x09, 0x01,
+			0x03, 0x02, 0x03, 0x09, 0x01, 0x04, 0x09, 0x0C,
+			0x07, 0xE2,
+		};
+
+		uint32_t crc = 0xffff;
+
+		/* update from each byte*/
+		for (size_t index = 0; index < ARRAY_SIZE(from1); index++) {
+			crc = crc16_ccitt_partial((uint8_t *)&from1[index], 1, crc);
+		}
+
+		/* update from chunk of bytes */
+		crc = crc16_ccitt_partial((uint8_t *)&from2[0],
+		                          ARRAY_SIZE(from2),
+		                          crc);
+
+		/* update from each byte */
+		for (size_t index = 0; index < ARRAY_SIZE(from3); index++) {
+			crc = crc16_ccitt_partial((uint8_t *)&from3[index], 1, crc);
+		}
+
+		crc = ~crc;
+
+		TEST_ASSERT_EQUAL((uint16_t)crc, 0x214f);
 	}
 
   /* Tests end */
