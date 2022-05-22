@@ -23,8 +23,8 @@ extern "C"
  * PUBLIC FUNCTIONS
  *************************************************************************************************/
 
-  void function_name_tests(void);
- 
+void hdlc_frame_is_complete_tests(void);
+
 #ifdef __cplusplus
 }
 #endif /*  __cplusplus */

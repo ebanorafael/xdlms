@@ -31,6 +31,7 @@
 #endif /* UNIT_TESTS */
 
 #include "xdlms-hdlc-frame-validate.h"
+#include "xdlms-hdlc.h"
 
 /* System functioning includes end */
 
@@ -50,13 +51,6 @@
 /*******************************************************************
  * PRIVATE TYPES
  *******************************************************************/
-
-typedef enum hdlc_frame_defs_t {
-	HDLC_FRAME_LIMIT = 0x7e,
-	HDLC_FRAME_PARTIAL_MIN_SIZE = 3,
-	HDLC_FRAME_COMPLETE_MIN_SIZE = 5,
-	HDLC_FRAME_FCS_POS = 3,
-} hdlc_frame_defs_t;
 
 #ifdef UNIT_TESTS
 
@@ -107,9 +101,7 @@ hdlc_frame_is_complete(
 		ARRAY_USED(&p_from[HDLC_FCS_POSITION(size)],
 		           sizeof(uint16_t));
 
-  status_t status = STATUS_SUCCESS;
-  status = array_pull_hton(&from, (uint8_t *)&rx_crc, sizeof(rx_crc));
-  RETURN_IF_FALSE(status == STATUS_SUCCESS, STATUS_HDLC_BUFFER_OVERFLOW);
+  (void) array_pull(&from, (uint8_t *)&rx_crc, sizeof(uint16_t));
 
   uint32_t cx_crc = crc;
   if (crc == ~0) { /* computed crc not given: compute from frame */

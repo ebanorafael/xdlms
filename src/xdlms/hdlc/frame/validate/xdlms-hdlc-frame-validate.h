@@ -65,6 +65,15 @@ extern "C"
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
+/*!
+ * @brief Checks if a xDLMS HDLC frame is complete
+ * @param p_from Address of buffer holding frame data
+ * @param size Number of data in the frame
+ * @param crc CRC of the frame
+ *        if given: must be little-endian
+ *        if not given: must be ~0
+ * @return Status of the operation
+ */
 status_t
 hdlc_frame_is_complete(
   const uint8_t p_from[static const 1],
