@@ -23,8 +23,8 @@ extern "C"
  * PUBLIC FUNCTIONS
  *************************************************************************************************/
 
-  void function_name_tests(void);
- 
+void xdlms_hdlc_parse_mac_format_tests(void);
+
 #ifdef __cplusplus
 }
 #endif /*  __cplusplus */

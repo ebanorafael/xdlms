@@ -104,12 +104,12 @@ hdlc_frame_is_complete(
 
 	uint32_t rx_crc = 0;
   array_t from =
-		ARRAY_USED(&p_from[HDLC_FCS_POSITION(size)], sizeof(uint16_t));
-  status_t status =
-  	array_pull_hton(&from, (uint8_t *)&rx_crc, sizeof(rx_crc));
+		ARRAY_USED(&p_from[HDLC_FCS_POSITION(size)],
+		           sizeof(uint16_t));
 
-  RETURN_IF_FALSE(status == STATUS_SUCCESS,
-  	STATUS_HDLC_BUFFER_OVERFLOW);
+  status_t status = STATUS_SUCCESS;
+  status = array_pull_hton(&from, (uint8_t *)&rx_crc, sizeof(rx_crc));
+  RETURN_IF_FALSE(status == STATUS_SUCCESS, STATUS_HDLC_BUFFER_OVERFLOW);
 
   uint32_t cx_crc = crc;
   if (crc == ~0) { /* computed crc not given: compute from frame */

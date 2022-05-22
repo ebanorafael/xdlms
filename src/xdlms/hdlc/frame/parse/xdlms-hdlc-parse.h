@@ -77,6 +77,12 @@ xdlms_hdlc_parse_mac_addresses(
 	hdlc_mac_address_t p_to[static 1]
 );
 
+STATIC status_t
+xdlms_hdlc_parse_mac_format(
+	array_t p_from[static 1],
+	uint32_t p_to[static 1]
+);
+
 #endif /* UNIT_TESTS */
  
 #ifdef __cplusplus

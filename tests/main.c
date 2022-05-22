@@ -36,6 +36,8 @@
 #include "array-tests.h"
 #include "xdlms-asn1-axdr-encode-tests.h"
 #include "xdlms-asn1-axdr-decode-tests.h"
+#include "xdlms-hdlc-frame-validate-tests.h"
+#include "xdlms-hdlc-parse-tests.h"
 #include "crc16-ccitt-tests.h"
 #include "hdlc-address-tests.h"
 
@@ -134,6 +136,14 @@ int main(void) {
 	if (1) { RUN_TEST(hdlc_pull_address_tests); }
 	if (1) { RUN_TEST(hdlc_build_address_tests); }
 	if (1) { RUN_TEST(hdlc_push_address_tests); }
+
+	PRINT("\n===== xDLMS HDLC Frame Validate lib. Tests =====\n\n");
+
+	if (0) { RUN_TEST(xdlms_hdlc_parse_mac_format_tests); }
+
+	PRINT("\n===== xDLMS HDLC Frame Parse lib. Tests =====\n\n");
+
+	if (1) { RUN_TEST(xdlms_hdlc_parse_mac_format_tests); }
 
 	PRINT("\n===== CRC-16 CCITT lib. Tests =====\n\n");
 
