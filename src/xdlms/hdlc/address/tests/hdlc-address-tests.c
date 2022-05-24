@@ -171,7 +171,7 @@ void hdlc_decode_address_tests(void) {
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_INVALID);
 
-    TEST_ASSERT_EQUAL(to.address, (uint32_t)~0);
+    TEST_ASSERT_EQUAL(to.value, (uint32_t)~0);
     TEST_ASSERT_EQUAL(to.size, (uint32_t)~0);
 	}
 
@@ -183,7 +183,7 @@ void hdlc_decode_address_tests(void) {
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_ADDRESS_PARSE_FAIL);
 
-    TEST_ASSERT_EQUAL(to.address, (uint32_t)~0);
+    TEST_ASSERT_EQUAL(to.value, (uint32_t)~0);
     TEST_ASSERT_EQUAL(to.size, (uint32_t)~0);
 	}
 
@@ -195,7 +195,7 @@ void hdlc_decode_address_tests(void) {
     status_t status = hdlc_decode_address(&from, &to, ARRAY_SIZE(data));
     TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-    TEST_ASSERT_EQUAL(to.address, 0x12343fff);
+    TEST_ASSERT_EQUAL(to.value, 0x12343fff);
     TEST_ASSERT_EQUAL(to.size, 4);
 	}
 
@@ -250,7 +250,7 @@ void hdlc_pull_address_tests(void) {
     status_t status = hdlc_pull_address(&from, &to);
     TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-    TEST_ASSERT_EQUAL(to.address, 0x2041);
+    TEST_ASSERT_EQUAL(to.value, 0x2041);
     TEST_ASSERT_EQUAL(to.size, sizeof(uint16_t));
   }
 
@@ -283,7 +283,7 @@ void hdlc_build_address_tests(void) {
   /* Tests start*/
 
   if (1) { /* fail: invalid array */
-    const hdlc_address_t from = { .address = (uint32_t)~0, .size = 3 };
+    const hdlc_address_t from = { .value = (uint32_t)~0, .size = 3 };
     array_t to = { .start = 5, .end = 2, .size = 1 };
 
     status_t status = hdlc_build_address(&from, &to);
@@ -291,7 +291,7 @@ void hdlc_build_address_tests(void) {
   }
 
   if (1) { /* fail: not enought bytes in array */
-    const hdlc_address_t from = { .address = (uint32_t)~0, .size = 3 };
+    const hdlc_address_t from = { .value = (uint32_t)~0, .size = 3 };
     array_t to = ARRAY_FREE(NULL, 1);
 
     status_t status = hdlc_build_address(&from, &to);
@@ -326,7 +326,7 @@ void hdlc_build_address_tests(void) {
   }
 
   if (1) { /* success */
-    const hdlc_address_t from = { .address = 0x7f, .size = 1 };
+    const hdlc_address_t from = { .value = 0x7f, .size = 1 };
     uint8_t data[16] = { 0 };
     array_t to = ARRAY_FREE(data, ARRAY_SIZE(data));
 
@@ -337,7 +337,7 @@ void hdlc_build_address_tests(void) {
   }
 
   if (1) { /* success */
-    const hdlc_address_t from = { .address = 0x3fff, .size = 2 };
+    const hdlc_address_t from = { .value = 0x3fff, .size = 2 };
     uint8_t data[8] = { 0 };
     array_t to = ARRAY_FREE(data, ARRAY_SIZE(data));
 
@@ -349,7 +349,7 @@ void hdlc_build_address_tests(void) {
   }
 
   if (1) { /* success */
-    const hdlc_address_t from = { .address = 0x12343fff, .size = 4 };
+    const hdlc_address_t from = { .value = 0x12343fff, .size = 4 };
     uint8_t data[8] = { 0 };
     array_t to = ARRAY_FREE(data, ARRAY_SIZE(data));
 
@@ -363,7 +363,7 @@ void hdlc_build_address_tests(void) {
   }
 
   if (1) { /* success */
-    const hdlc_address_t from = { .address = 0x3fff3fff, .size = 4 };
+    const hdlc_address_t from = { .value = 0x3fff3fff, .size = 4 };
     uint8_t data[8] = { 0 };
     array_t to = ARRAY_FREE(data, ARRAY_SIZE(data));
 
@@ -398,7 +398,7 @@ void hdlc_push_address_tests(void) {
   }
 
   if (1) { /* success */
-    const hdlc_address_t from = { .address = 0x3fff3fff, .size = 4 };
+    const hdlc_address_t from = { .value = 0x3fff3fff, .size = 4 };
     uint8_t data[8] = { 0 };
     array_t to = ARRAY_FREE(data, ARRAY_SIZE(data));
 

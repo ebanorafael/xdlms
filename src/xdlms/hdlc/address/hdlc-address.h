@@ -46,7 +46,7 @@ extern "C"
  *******************************************************************/
 
 typedef struct hdlc_address_t {
-	uint32_t address;
+	uint32_t value;
 	size_t size;
 } hdlc_address_t;
 
