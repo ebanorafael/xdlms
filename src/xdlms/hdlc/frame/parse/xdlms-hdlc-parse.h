@@ -63,6 +63,12 @@ extern "C"
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
+/*!
+ * @brief Parses MAC information from xDLMS HDLC frame
+ * @param p_from Address of structure holding data to parse
+ * @param p_to Address of structure to hold parsed data
+ * @return Status of the operation
+ */
 status_t
 xdlms_hdlc_parse_mac(
 	array_t p_from[static const 1],

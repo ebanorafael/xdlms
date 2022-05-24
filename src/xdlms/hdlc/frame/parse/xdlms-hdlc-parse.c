@@ -196,6 +196,7 @@ status_t
 xdlms_hdlc_parse_mac(
 	array_t p_from[static const 1],
 	hdlc_mac_info_t p_to[static 1]) {
+	ASSERT(p_to != NULL, STATUS_HDLC_INVALID_PARAMETER);
 
 	status_t status =
 		xdlms_hdlc_parse_and_validate_frame_length(p_from,
