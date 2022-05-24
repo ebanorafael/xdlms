@@ -11,6 +11,9 @@ extern "C"
  * EXTERNED DEFINES
  *******************************************************************/
 
+#define HDLC_FRAME_LENGTH(SIZE) \
+	((SIZE) - (HDLC_FRAME_OVERHEAD))
+
 #ifdef UNIT_TESTS
 
 #endif /* UNIT_TESTS */
@@ -48,6 +51,7 @@ typedef enum hdlc_defs_t {
 	HDLC_FRAME_PARTIAL_MIN_SIZE = 3,
 	HDLC_FRAME_COMPLETE_MIN_SIZE = 5,
 	HDLC_FRAME_FCS_POS = 3,
+	HDLC_FRAME_OVERHEAD = 2, /* two 0x7e delimiters*/
 	HDLC_FRAME_FORMAT_TYPE_POS = 12,
 	HDLC_FRAME_FORMAT_TYPE = 0xa,
 	HDLC_FRAME_SEGMENTATION_MASK = 1 << 11,
