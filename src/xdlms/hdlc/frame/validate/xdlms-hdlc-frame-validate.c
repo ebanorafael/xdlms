@@ -107,6 +107,8 @@ hdlc_frame_is_complete(
   if (crc == ~0) { /* computed crc not given: compute from frame */
   	cx_crc = crc16_ccitt_complete((uint8_t *)&p_from[1],
   	                              HDLC_FCS_POSITION(size) - 1);
+
+  	cx_crc = __builtin_bswap16(cx_crc);
   }
 
   RETURN_IF_FALSE((uint16_t)cx_crc == (uint16_t)rx_crc,
