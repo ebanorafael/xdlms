@@ -174,7 +174,7 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
-	if (1) { /* fail: invalid frame format */
+	if (0) { /* fail: invalid frame format */
 		const uint8_t buffer[] = {
 			0x7e, 0xff, 0x07, 0x17, 0x03, 0x91, 0xcb, 0xf4, 0x7e
 		};
@@ -191,7 +191,7 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
-	if (1) { /* fail: invalid frame size */
+	if (0) { /* fail: invalid frame size */
 		const uint8_t buffer[] = {
 			 0x7e, 0xa0, 0x12, 0x17, 0x03, 0x91, 0x79, 0x9c, 0x7e
 		};
@@ -208,7 +208,7 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
-	if (1) { /* success */
+	if (0) { /* success */
 		const uint8_t buffer[] = {
 			 0x7e, 0xa0, 0x07, 0x17, 0x03, 0x91, 0xd4, 0x6a, 0x7e
 		};
@@ -275,7 +275,7 @@ void xdlms_hdlc_parse_mac_addresses_tests(void) {
 		status = xdlms_hdlc_parse_mac_addresses(&from, &to);
 		TEST_ASSERT_EQUAL(status, STATUS_ARRAY_BUFFER_OVERFLOW);
 
-		TEST_ASSERT_EQUAL(to.dst.address, 0x2041);
+		TEST_ASSERT_EQUAL(to.dst.value, 0x2041);
 		TEST_ASSERT_EQUAL(to.dst.size, sizeof(uint16_t));
 	}
 
@@ -291,11 +291,77 @@ void xdlms_hdlc_parse_mac_addresses_tests(void) {
 		status = xdlms_hdlc_parse_mac_addresses(&from, &to);
 		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-		TEST_ASSERT_EQUAL(to.dst.address, 0x2041);
+		TEST_ASSERT_EQUAL(to.dst.value, 0x2041);
 		TEST_ASSERT_EQUAL(to.dst.size, sizeof(uint16_t));
 
-		TEST_ASSERT_EQUAL(to.src.address, 0x12343fff);
+		TEST_ASSERT_EQUAL(to.src.value, 0x12343fff);
 		TEST_ASSERT_EQUAL(to.src.size, sizeof(uint32_t));
+	}
+
+  /* Tests end */
+
+  return;
+}
+
+void xdlms_hdlc_parse_mac_tests(void) {
+  /* Global test variables start */
+
+  /* Global test variables end */
+
+  /* Start of assertion test cases */
+
+	if (1) { /* fail: null pointer */
+		status_t status = STATUS_SUCCESS;
+
+		status = xdlms_hdlc_parse_mac(NULL, NULL);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+  /* End of assertion test cases */
+
+  /* Tests start*/
+
+	if (1) { /* fail: buffer without valid information */
+		array_t from = ARRAY_FREE(NULL, 0);
+		hdlc_mac_info_t to = { 0 };
+
+		status_t status = STATUS_SUCCESS;
+
+		status = xdlms_hdlc_parse_mac(&from, &to);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+	if (1) { /* success */
+		const uint8_t buffer[] = {
+			0x7e, 0xa0, 0x6c, 0x03, 0x17, 0x7a, 0x43, 0xc0,
+			0xe6, 0xe6, 0x00, 0xc1, 0x03, 0xc1, 0x01, 0x00,
+			0x00, 0x00, 0x02, 0x57, 0x03, 0x09, 0x01, 0x05,
+			0x09, 0x0c, 0x08, 0x3c, 0x06, 0x05, 0x02, 0x00,
+			0x00, 0x00, 0x00, 0x00, 0xf0, 0x80, 0x09, 0x01,
+			0x03, 0x02, 0x03, 0x09, 0x01, 0x06, 0x09, 0x0c,
+			0x07, 0xe2, 0x06, 0x09, 0x06, 0x00, 0x00, 0x00,
+			0x00, 0x00, 0xf0, 0x80, 0x09, 0x01, 0x02, 0x02,
+			0x03, 0x09, 0x01, 0x07, 0x09, 0x0c, 0x07, 0xe2,
+			0x06, 0x0d, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00,
+			0xf0, 0x80, 0x09, 0x01, 0x01, 0x02, 0x03, 0x09,
+			0x01, 0x08, 0x09, 0x0c, 0x07, 0xe2, 0x06, 0x12,
+			0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x80,
+			0x09, 0x01, 0x04, 0x47, 0xee, 0x7e
+		};
+		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
+		hdlc_mac_info_t to = { 0 };
+
+		status_t status = STATUS_SUCCESS;
+
+		status = xdlms_hdlc_parse_mac(&from, &to);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to.frame_len, buffer[2]);
+		TEST_ASSERT_EQUAL(to.address.dst.value, 1);
+		TEST_ASSERT_EQUAL(to.address.dst.size, sizeof(uint8_t));
+		TEST_ASSERT_EQUAL(to.address.src.value, 11);
+		TEST_ASSERT_EQUAL(to.address.src.size, sizeof(uint8_t));
+		TEST_ASSERT_EQUAL(to.is_segmented, false);
 	}
 
   /* Tests end */

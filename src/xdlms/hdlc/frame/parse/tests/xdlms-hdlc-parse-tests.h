@@ -26,6 +26,7 @@ extern "C"
 void xdlms_hdlc_parse_mac_format_tests(void);
 void xdlms_hdlc_parse_and_validate_frame_length_tests(void);
 void xdlms_hdlc_parse_mac_addresses_tests(void);
+void xdlms_hdlc_parse_mac_tests(void);
 
 #ifdef __cplusplus
 }
