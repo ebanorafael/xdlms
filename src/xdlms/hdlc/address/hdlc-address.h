@@ -76,6 +76,12 @@ hdlc_push_address(
   array_t p_to[static 1]
 );
 
+/*!
+ * @brief Pulls HDLC Address
+ * @param p_from Address of structure holding data to be parsed
+ * @param p_to Address of structure to hold parsed data
+ * @return Status of the operation
+ */
 status_t
 hdlc_pull_address(
   array_t p_from[static 1],

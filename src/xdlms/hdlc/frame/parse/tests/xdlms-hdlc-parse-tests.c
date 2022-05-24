@@ -230,3 +230,75 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
   return;
 }
 
+void xdlms_hdlc_parse_mac_addresses_tests(void) {
+  /* Global test variables start */
+
+  /* Global test variables end */
+
+  /* Start of assertion test cases */
+
+	if (1) { /* fail: null pointer */
+		status_t status = STATUS_SUCCESS;
+
+		status = xdlms_hdlc_parse_mac_addresses(NULL, NULL);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+	if (1) { /* fail: null pointer */
+		status_t status = STATUS_SUCCESS;
+		array_t from = ARRAY_FREE(NULL, 0);
+
+		status = xdlms_hdlc_parse_mac_addresses(&from, NULL);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
+	}
+
+  /* End of assertion test cases */
+
+  /* Tests start*/
+
+	if (1) { /* fail: invalid array */
+		status_t status = STATUS_SUCCESS;
+		array_t from = ARRAY_FREE(NULL, 0);
+		hdlc_mac_address_t to = { 0 };
+
+		status = xdlms_hdlc_parse_mac_addresses(&from, &to);
+		TEST_ASSERT_EQUAL(status, STATUS_ARRAY_BUFFER_OVERFLOW);
+	}
+
+	if (1) { /* fail: incomplete data */
+		const uint8_t buffer[] = { 0x80, 0x41 };
+		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
+		hdlc_mac_address_t to = { 0 };
+
+		status_t status = STATUS_SUCCESS;
+
+		status = xdlms_hdlc_parse_mac_addresses(&from, &to);
+		TEST_ASSERT_EQUAL(status, STATUS_ARRAY_BUFFER_OVERFLOW);
+
+		TEST_ASSERT_EQUAL(to.dst.address, 0x2041);
+		TEST_ASSERT_EQUAL(to.dst.size, sizeof(uint16_t));
+	}
+
+	if (1) { /* success */
+		const uint8_t buffer[] = {
+			0x80, 0x41, 0x48, 0x68, 0xfe, 0xff
+		};
+		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
+		hdlc_mac_address_t to = { 0 };
+
+		status_t status = STATUS_SUCCESS;
+
+		status = xdlms_hdlc_parse_mac_addresses(&from, &to);
+		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
+
+		TEST_ASSERT_EQUAL(to.dst.address, 0x2041);
+		TEST_ASSERT_EQUAL(to.dst.size, sizeof(uint16_t));
+
+		TEST_ASSERT_EQUAL(to.src.address, 0x12343fff);
+		TEST_ASSERT_EQUAL(to.src.size, sizeof(uint32_t));
+	}
+
+  /* Tests end */
+
+  return;
+}

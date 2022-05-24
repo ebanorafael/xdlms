@@ -145,6 +145,7 @@ int main(void) {
 
 	if (1) { RUN_TEST(xdlms_hdlc_parse_mac_format_tests); }
 	if (1) { RUN_TEST(xdlms_hdlc_parse_and_validate_frame_length_tests); }
+	if (1) { RUN_TEST(xdlms_hdlc_parse_mac_addresses_tests); }
 
 	PRINT("\n===== CRC-16 CCITT lib. Tests =====\n\n");
 

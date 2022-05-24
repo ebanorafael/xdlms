@@ -91,6 +91,18 @@ xdlms_hdlc_parse_and_validate_frame_length(
 	bool p_segment[static 1]
 );
 
+/*!
+ * @brief Parses MAC Addresses (Source and Destination) from frame
+ * @param p_from Address of structure holding data information
+ * @param p_to Address of structure to hold parsed information
+ * @return Status of the operation
+ */
+STATIC status_t
+xdlms_hdlc_parse_mac_addresses(
+	array_t p_from[static 1],
+	hdlc_mac_address_t p_to[static 1]
+);
+
 #endif /* UNIT_TESTS */
 
 /*******************************************************************
