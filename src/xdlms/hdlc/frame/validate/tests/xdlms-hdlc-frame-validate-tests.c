@@ -134,7 +134,7 @@ void hdlc_frame_is_complete_tests(void) {
   	};
   	status_t status = STATUS_SUCCESS;
 
-  	status = hdlc_frame_is_complete(&from[0], ARRAY_SIZE(from), 0xd46a);
+  	status = hdlc_frame_is_complete(&from[0], ARRAY_SIZE(from), 0x6ad4);
   	TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
   }
 

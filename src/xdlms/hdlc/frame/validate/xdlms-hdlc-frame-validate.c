@@ -101,7 +101,7 @@ hdlc_frame_is_complete(
 		ARRAY_USED(&p_from[HDLC_FCS_POSITION(size)],
 		           sizeof(uint16_t));
 
-  (void) array_pull(&from, (uint8_t *)&rx_crc, sizeof(uint16_t));
+  (void) array_pull_hton(&from, (uint8_t *)&rx_crc, sizeof(uint16_t));
 
   uint32_t cx_crc = crc;
   if (crc == ~0) { /* computed crc not given: compute from frame */
