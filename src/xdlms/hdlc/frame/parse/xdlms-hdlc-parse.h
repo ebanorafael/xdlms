@@ -83,6 +83,13 @@ xdlms_hdlc_parse_mac_format(
 	uint32_t p_to[static 1]
 );
 
+STATIC status_t
+xdlms_hdlc_parse_and_validate_frame_length(
+	array_t p_from[static 1],
+	size_t p_length[static 1],
+	bool p_segment[static 1]
+);
+
 #endif /* UNIT_TESTS */
  
 #ifdef __cplusplus

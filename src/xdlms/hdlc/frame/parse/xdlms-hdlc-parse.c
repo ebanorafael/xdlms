@@ -68,7 +68,7 @@ xdlms_hdlc_parse_mac_addresses(
 
 /*!
  * @brief Parses MAC HDLC Frame Format field for xDLMS
- * @param p_from Address of structure holding array of data
+ * @param p_from Address of structure holding information of array of data
  * @param p_to Address of variable to hold parsed Frame Format field
  * @return Status of the operation
  */
@@ -76,6 +76,19 @@ STATIC status_t
 xdlms_hdlc_parse_mac_format(
 	array_t p_from[static 1],
 	uint32_t p_to[static 1]
+);
+
+/*!
+ * @brief Parses and Validate Frame Length
+ * @param p_from Address of structure holding information of array of data
+ * @param p_to Address of variable to hold parsed length
+ * @return Status of the operation
+ */
+STATIC status_t
+xdlms_hdlc_parse_and_validate_frame_length(
+	array_t p_from[static 1],
+	size_t p_length[static 1],
+	bool p_segment[static 1]
 );
 
 #endif /* UNIT_TESTS */
@@ -140,28 +153,29 @@ xdlms_hdlc_parse_and_validate_frame_length(
 	size_t p_length[static 1],
 	bool p_segment[static 1]) {
 
+	ASSERT(p_length != NULL, STATUS_HDLC_INVALID_PARAMETER);
+	ASSERT(p_segment != NULL, STATUS_HDLC_INVALID_PARAMETER);
+
 	p_length[0] = (size_t)~0;
 	p_segment[0] = false;
 
 	status_t status = STATUS_SUCCESS;
-	status = hdlc_frame_is_complete(p_from->p_array,
-																	array_used(p_from),
-																	~0);
-	RETURN_IF_FALSE(status != STATUS_SUCCESS, status);
+	const size_t len = array_used(p_from);
 
-	status = array_drop(p_from, sizeof(uint8_t)); /* drop 0x7e */
+	status = hdlc_frame_is_complete(&p_from->p_array[0], len, ~0);
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
+
+	(void) array_drop(p_from, sizeof(uint8_t)); /* drop 0x7e */
 
 	uint32_t format = 0;
 
 	status = xdlms_hdlc_parse_mac_format(p_from, &format);
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
-	p_length[0] = (size_t)(format & HDLC_FRAME_LEN_MASK);
-	RETURN_IF_FALSE(array_used(p_from) == p_length[0],
-		STATUS_HDLC_INVALID_FRAME_LENGTH);
+	const size_t size = (size_t)(format & HDLC_FRAME_LEN_MASK);
+	RETURN_IF_FALSE(HDLC_FRAME_LENGTH(len) == size, STATUS_HDLC_INVALID_FRAME_LENGTH);
 
-
+	p_length[0] = size;
 	p_segment[0] = format & HDLC_FRAME_SEGMENTATION_MASK;
 	return STATUS_SUCCESS;
 }

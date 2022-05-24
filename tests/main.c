@@ -139,11 +139,12 @@ int main(void) {
 
 	PRINT("\n===== xDLMS HDLC Frame Validate lib. Tests =====\n\n");
 
-	if (0) { RUN_TEST(xdlms_hdlc_parse_mac_format_tests); }
+	if (1) { RUN_TEST(hdlc_frame_is_complete_tests); }
 
 	PRINT("\n===== xDLMS HDLC Frame Parse lib. Tests =====\n\n");
 
 	if (1) { RUN_TEST(xdlms_hdlc_parse_mac_format_tests); }
+	if (1) { RUN_TEST(xdlms_hdlc_parse_and_validate_frame_length_tests); }
 
 	PRINT("\n===== CRC-16 CCITT lib. Tests =====\n\n");
 
