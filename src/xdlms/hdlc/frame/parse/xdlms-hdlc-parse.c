@@ -174,7 +174,7 @@ xdlms_hdlc_parse_and_validate_frame_length(
 	status_t status = STATUS_SUCCESS;
 	const size_t len = array_used(p_from);
 
-	status = hdlc_frame_fcs_valid(&p_from->p_array[0], len);
+	status = hdlc_frame_validate(&p_from->p_array[0], len);
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
 	(void) array_drop(p_from, sizeof(uint8_t)); /* drop 0x7e */

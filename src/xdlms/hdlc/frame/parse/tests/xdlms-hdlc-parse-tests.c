@@ -157,11 +157,11 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* fail: frame not complete */
+	if (1) { /* fail: invalid frame delimiter */
 		const uint8_t buffer[] = {
-			0x7E, 0xA0, 0x07, 0x17, 0x03, 0x91, 0x6A, 0xD4, 0x7E
+			0xff, 0xA0, 0x07, 0x17, 0x03, 0x91, 0x6A, 0xD4, 0x7E
 		};
-		array_t from = ARRAY_USED(buffer, 7);
+		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
 		size_t len = 0;
 		bool is_seg = true;
 
@@ -174,9 +174,9 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
-	if (0) { /* fail: invalid frame format */
+	if (1) { /* fail: invalid frame format */
 		const uint8_t buffer[] = {
-			0x7e, 0xff, 0x07, 0x17, 0x03, 0x91, 0xcb, 0xf4, 0x7e
+			0x7e, 0xff, 0x07, 0x17, 0x03, 0x91, 0xf4, 0xcb, 0x7e
 		};
 		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
 		size_t len = 0;
@@ -191,9 +191,9 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
-	if (0) { /* fail: invalid frame size */
+	if (1) { /* fail: invalid frame size */
 		const uint8_t buffer[] = {
-			 0x7e, 0xa0, 0x12, 0x17, 0x03, 0x91, 0x79, 0x9c, 0x7e
+			 0x7e, 0xa0, 0x12, 0x17, 0x03, 0x91, 0x9c, 0x79, 0x7e
 		};
 		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
 		size_t len = 0;
@@ -208,9 +208,9 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
-	if (0) { /* success */
+	if (1) { /* success */
 		const uint8_t buffer[] = {
-			 0x7e, 0xa0, 0x07, 0x17, 0x03, 0x91, 0xd4, 0x6a, 0x7e
+			0x7E, 0xA0, 0x07, 0x17, 0x03, 0x91, 0x6a, 0xd4, 0x7E
 		};
 		array_t from = ARRAY_USED(buffer, ARRAY_SIZE(buffer));
 		size_t len = 0;
@@ -221,7 +221,7 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 		status = xdlms_hdlc_parse_and_validate_frame_length(&from, &len, &is_seg);
 		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-		TEST_ASSERT_EQUAL(len, buffer[2]);
+		TEST_ASSERT_EQUAL(len, 7);
 		TEST_ASSERT_EQUAL(is_seg, false);
 	}
 
