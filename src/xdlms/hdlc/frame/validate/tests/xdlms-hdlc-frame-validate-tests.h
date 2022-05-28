@@ -23,7 +23,10 @@ extern "C"
  * PUBLIC FUNCTIONS
  *************************************************************************************************/
 
-void hdlc_frame_is_complete_tests(void);
+void hdlc_crc_validate_tests(void);
+void hdlc_frame_hcs_valid_tests(void);
+void hdlc_frame_fcs_valid_tests(void);
+void hdlc_frame_validate_tests(void);
 
 #ifdef __cplusplus
 }

@@ -66,23 +66,50 @@ extern "C"
  *******************************************************************/
 
 /*!
- * @brief Checks if a xDLMS HDLC frame is complete
- * @param p_from Address of buffer holding frame data
- * @param size Number of data in the frame
- * @param crc CRC of the frame
- *        if given: must be little-endian
- *        if not given: must be ~0
+ * @brief Validates a xDLMS HDLC frame header checksum
+ * @param p_from Address of first byte of the header
+ * @param size Number of bytes in header, including its checksum
  * @return Status of the operation
+ * @note: The checksum of the header are the last 2 bytes
  */
 status_t
-hdlc_frame_is_complete(
+hdlc_frame_hcs_valid(
+	const uint8_t p_from[static 1],
+	const size_t size
+);
+
+/*!
+ * @brief Validate a xDLMS HDLC frame by its checksum
+ * @param p_from Address of buffer holding frame data
+ * @param size Number of data in the frame
+ * @return Status of the operation
+ * @note The last two bytes of data is the received crc
+ */
+status_t
+hdlc_frame_fcs_valid(
   const uint8_t p_from[static const 1],
-  const size_t size,
-  const uint32_t crc
+  const size_t size
+);
+
+/*!
+ * @brief Validates a xDLMS HDLC frame
+ * @param p_from Address of buffer holding frame bytes
+ * @param size Number of byte in frame to validate
+ * @return Status of the Operation
+ */
+status_t
+hdlc_frame_validate(
+	const uint8_t p_from[static 1],
+	const size_t size
 );
 
 #ifdef UNIT_TESTS
 
+STATIC status_t
+hdlc_crc_validate(
+	const uint8_t p_from[static 1],
+	const size_t size
+);
 #endif /* UNIT_TESTS */
  
 #ifdef __cplusplus

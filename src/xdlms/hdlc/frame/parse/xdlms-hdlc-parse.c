@@ -174,7 +174,7 @@ xdlms_hdlc_parse_and_validate_frame_length(
 	status_t status = STATUS_SUCCESS;
 	const size_t len = array_used(p_from);
 
-	status = hdlc_frame_is_complete(&p_from->p_array[0], len, ~0);
+	status = hdlc_frame_fcs_valid(&p_from->p_array[0], len);
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
 	(void) array_drop(p_from, sizeof(uint8_t)); /* drop 0x7e */
@@ -204,7 +204,15 @@ xdlms_hdlc_parse_mac(
 		                                           &p_to->is_segmented);
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
-	return xdlms_hdlc_parse_mac_addresses(p_from, &p_to->address);
+	status = xdlms_hdlc_parse_mac_addresses(p_from, &p_to->address);
+	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
+
+//	const size_t header_size =
+//		sizeof(uint16_t) + /* frame format field size */
+//		p_to->address.dst.size +
+//		p_to->address.src.size +
+//		sizeof(uint8_t); /* frame control  field size */
+	return STATUS_SUCCESS;
 }
 
 #ifdef UNIT_TESTS
