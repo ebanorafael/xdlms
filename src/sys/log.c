@@ -77,6 +77,7 @@
 
 void
 log_event(status_t status) {
+	(void) status;
 	return;
 }
 

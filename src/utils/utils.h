@@ -47,7 +47,7 @@ extern "C"
 	do { \
 		if ((ENABLED)) { \
 			CONSOLE_TRACE(__VA_ARGS__); \
-			for (int index = 0; index < SIZE; index++) { \
+			for (int index = 0; index < (int)(SIZE); index++) { \
 				PRINT("%02x", P_FROM[index]); \
 			} \
 				PRINT("\n"); \
