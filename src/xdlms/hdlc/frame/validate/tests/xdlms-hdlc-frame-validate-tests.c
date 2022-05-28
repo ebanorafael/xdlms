@@ -99,7 +99,7 @@ void hdlc_crc_validate_tests(void) {
 		status_t status = STATUS_SUCCESS;
 
 		status = hdlc_crc_validate(&from[0], ARRAY_SIZE(from));
-		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_FRAME);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_CHECKSUM);
 	}
 
 	if (1) { /* success: header only */
@@ -188,7 +188,7 @@ void hdlc_frame_hcs_valid_tests(void) {
 		status_t status = STATUS_SUCCESS;
 
 		status = hdlc_frame_hcs_valid(&from[1], 7);
-		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_FRAME);
+		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_HEADER_CHECKSUM);
 	}
 
 	if (1) { /* success: hdlc frame */

@@ -137,6 +137,11 @@ int main(void) {
 	if (1) { RUN_TEST(hdlc_build_address_tests); }
 	if (1) { RUN_TEST(hdlc_push_address_tests); }
 
+	PRINT("\n===== CRC-16 CCITT lib. Tests =====\n\n");
+
+	if (1) { RUN_TEST(crc16_ccitt_tests); }
+	if (1) { RUN_TEST(crc16_ccitt_update_tests); }
+
 	PRINT("\n===== xDLMS HDLC Frame Validate lib. Tests =====\n\n");
 
 	if (1) { RUN_TEST(hdlc_crc_validate_tests); }
@@ -150,11 +155,6 @@ int main(void) {
 	if (1) { RUN_TEST(xdlms_hdlc_parse_and_validate_frame_length_tests); }
 	if (1) { RUN_TEST(xdlms_hdlc_parse_mac_addresses_tests); }
 	if (1) { RUN_TEST(xdlms_hdlc_parse_mac_tests); }
-
-	PRINT("\n===== CRC-16 CCITT lib. Tests =====\n\n");
-
-	if (1) { RUN_TEST(crc16_ccitt_tests); }
-	if (1) { RUN_TEST(crc16_ccitt_update_tests); }
 
 	return UNITY_END();
 }

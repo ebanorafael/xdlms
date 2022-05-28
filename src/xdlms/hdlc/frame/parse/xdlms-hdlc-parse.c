@@ -189,6 +189,7 @@ xdlms_hdlc_parse_and_validate_frame_length(
 
 	p_length[0] = size;
 	p_segment[0] = format & HDLC_FRAME_SEGMENTATION_MASK;
+
 	return STATUS_SUCCESS;
 }
 
@@ -207,11 +208,16 @@ xdlms_hdlc_parse_mac(
 	status = xdlms_hdlc_parse_mac_addresses(p_from, &p_to->address);
 	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
 
-//	const size_t header_size =
-//		sizeof(uint16_t) + /* frame format field size */
-//		p_to->address.dst.size +
-//		p_to->address.src.size +
-//		sizeof(uint8_t); /* frame control  field size */
+	const size_t header_size =
+		sizeof(uint16_t) + /* frame format field size */
+		p_to->address.dst.size +
+		p_to->address.src.size +
+		sizeof(uint8_t) + /* frame control field size */
+		sizeof(uint16_t); /* checksum size */
+
+	status = hdlc_frame_hcs_valid(&p_from->p_array[1], header_size);
+	RETURN_IF_FALSE(status == STATUS_SUCCESS, status);
+
 	return STATUS_SUCCESS;
 }
 

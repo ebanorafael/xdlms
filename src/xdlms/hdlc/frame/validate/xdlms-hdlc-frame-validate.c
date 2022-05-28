@@ -102,7 +102,7 @@ hdlc_crc_validate(
 	crc[1] = __builtin_bswap16(crc[1]);
 
 	RETURN_IF_FALSE((uint16_t)crc[0] == (uint16_t)crc[1],
-		STATUS_HDLC_INVALID_FRAME);
+		STATUS_HDLC_INVALID_CHECKSUM);
 
 	return STATUS_SUCCESS;
 }
@@ -117,7 +117,10 @@ hdlc_frame_hcs_valid(
 	RETURN_IF_FALSE(!(size > HDLC_FRAME_HEADER_MAX_SIZE),
 		STATUS_HDLC_INVALID_FRAME);
 
-	return hdlc_crc_validate(p_from, size);
+	status_t status = hdlc_crc_validate(p_from, size);
+	RETURN_IF_FALSE(status == STATUS_HDLC_INVALID_CHECKSUM, status);
+
+	return STATUS_HDLC_INVALID_HEADER_CHECKSUM;
 }
 
 status_t
@@ -125,7 +128,10 @@ hdlc_frame_fcs_valid(
   const uint8_t p_from[static const 1],
   const size_t size) {
 
-	return hdlc_crc_validate(p_from, size);
+	status_t status = hdlc_crc_validate(p_from, size);
+	RETURN_IF_FALSE(status == STATUS_HDLC_INVALID_CHECKSUM, status);
+
+	return STATUS_HDLC_INVALID_FRAME_CHECKSUM;
 }
 
 status_t
