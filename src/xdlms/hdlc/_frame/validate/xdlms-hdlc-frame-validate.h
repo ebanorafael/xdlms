@@ -110,6 +110,7 @@ hdlc_crc_validate(
 	const uint8_t p_from[static 1],
 	const size_t size
 );
+
 #endif /* UNIT_TESTS */
  
 #ifdef __cplusplus

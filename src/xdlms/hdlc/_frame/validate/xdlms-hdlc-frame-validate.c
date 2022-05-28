@@ -66,6 +66,18 @@
 
 #else /* UNIT_TESTS */
 
+/*!
+ * @brief Validates a xDLMS HDLC CRC
+ * @param p_from Address of buffer holding data to validate
+ * @param size Number of bytes of data to validate
+ * @return Status of the operation
+ */
+STATIC status_t
+hdlc_crc_validate(
+	const uint8_t p_from[static 1],
+	const size_t size
+);
+
 #endif /* UNIT_TESTS */
 
 /*******************************************************************
@@ -92,7 +104,7 @@ hdlc_crc_validate(
 	RETURN_IF_FALSE(!(size < (sizeof(uint16_t))),
 		STATUS_HDLC_INVALID_FRAME);
 
-	uint32_t crc[2] = { 0, 0 };
+	uint32_t crc[2] = { 0, 0 }; /* 0: received, 1: computed */
 	array_t from =
 		ARRAY_USED(&p_from[size - sizeof(uint16_t)], sizeof(uint16_t));
 
