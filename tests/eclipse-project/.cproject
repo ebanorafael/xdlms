@@ -37,15 +37,17 @@
 									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/encode/tests"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/decode"/>
 									<listOptionValue builtIn="false" value="../../../src/xdlms/asn1/axdr/decode/tests"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/address/tests"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/crc16"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/crc16/tests"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/frame/validate"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/frame/validate/tests"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/frame/parse"/>
-									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/frame/parse/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/address"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/address/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/crc16"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/crc16/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/frame/control"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/frame/control/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/frame/validate"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/frame/validate/tests"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/frame/parse"/>
+									<listOptionValue builtIn="false" value="../../../src/xdlms/hdlc/support/frame/parse/tests"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1263975717" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="UNIT_TESTS"/>

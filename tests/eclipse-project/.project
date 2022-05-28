@@ -70,24 +70,14 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/address</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/crc16</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/frame</name>
+			<name>sources/hdlc/support</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>sources/hdlc/xdlms-hdlc.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/xdlms-hdlc.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/xdlms-hdlc.h</locationURI>
 		</link>
 		<link>
 			<name>sources/sys/log.c</name>
@@ -130,44 +120,34 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/xdlms-asn1-axdr.c</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/address/hdlc-address.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/address/hdlc-address.c</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/address/hdlc-address.h</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/address/hdlc-address.h</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/address/tests</name>
+			<name>sources/hdlc/support/address</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16</name>
+			<name>sources/hdlc/support/crc16</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16-ccitt.c</name>
+			<name>sources/hdlc/support/frame</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/xdlms-hdlc.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/crc16-ccitt.c</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/xdlms-hdlc.c</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16-ccitt.h</name>
+			<name>sources/hdlc/support/xdlms-hdlc.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/crc16-ccitt.h</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/frame/parse</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/frame/validate</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/xdlms-hdlc.h</locationURI>
 		</link>
 		<link>
 			<name>sources/asn1/axdr/decode/tests</name>
@@ -200,49 +180,59 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/xdlms-asn1-axdr-encode.h</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/address/tests/hdlc-address-tests.c</name>
+			<name>sources/hdlc/support/address/hdlc-address.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/address/tests/hdlc-address-tests.c</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/address/hdlc-address.c</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/address/tests/hdlc-address-tests.h</name>
+			<name>sources/hdlc/support/address/hdlc-address.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/address/tests/hdlc-address-tests.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/address/hdlc-address.h</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16/tests</name>
+			<name>sources/hdlc/support/address/tests</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/parse/tests</name>
+			<name>sources/hdlc/support/crc16/crc16-ccitt.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/crc16/crc16-ccitt.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/crc16/crc16-ccitt.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/crc16/crc16-ccitt.h</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/crc16/tests</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/parse/xdlms-hdlc-parse.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/parse/xdlms-hdlc-parse.c</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/frame/parse/xdlms-hdlc-parse.h</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/parse/xdlms-hdlc-parse.h</locationURI>
-		</link>
-		<link>
-			<name>sources/hdlc/frame/validate/tests</name>
+			<name>sources/hdlc/support/frame/control</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/validate/xdlms-hdlc-frame-validate.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/validate/xdlms-hdlc-frame-validate.c</locationURI>
+			<name>sources/hdlc/support/frame/parse</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/validate/xdlms-hdlc-frame-validate.h</name>
+			<name>sources/hdlc/support/frame/validate</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/tests/template_tests.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/validate/xdlms-hdlc-frame-validate.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/tests/template_tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/tests/template_tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/tests/template_tests.h</locationURI>
 		</link>
 		<link>
 			<name>sources/asn1/axdr/decode/tests/xdlms-asn1-axdr-decode-tests.c</name>
@@ -265,34 +255,99 @@
 			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/asn1/axdr/encode/tests/xdlms-asn1-axdr-encode-tests.h</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16/tests/crc16-ccitt-tests.c</name>
+			<name>sources/hdlc/support/address/tests/hdlc-address-tests.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/tests/crc16-ccitt-tests.c</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/address/tests/hdlc-address-tests.c</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/crc16/crc16/tests/crc16-ccitt-tests.h</name>
+			<name>sources/hdlc/support/address/tests/hdlc-address-tests.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/crc16/tests/crc16-ccitt-tests.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/address/tests/hdlc-address-tests.h</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/parse/tests/xdlms-hdlc-parse-tests.c</name>
+			<name>sources/hdlc/support/crc16/tests/crc16-ccitt-tests.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/parse/tests/xdlms-hdlc-parse-tests.c</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/crc16/tests/crc16-ccitt-tests.c</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/parse/tests/xdlms-hdlc-parse-tests.h</name>
+			<name>sources/hdlc/support/crc16/tests/crc16-ccitt-tests.h</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/parse/tests/xdlms-hdlc-parse-tests.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/crc16/tests/crc16-ccitt-tests.h</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/validate/tests/xdlms-hdlc-frame-validate-tests.c</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/validate/tests/xdlms-hdlc-frame-validate-tests.c</locationURI>
+			<name>sources/hdlc/support/frame/control/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>sources/hdlc/frame/validate/tests/xdlms-hdlc-frame-validate-tests.h</name>
+			<name>sources/hdlc/support/frame/control/xdlms-hdlc-control.c</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/frame/validate/tests/xdlms-hdlc-frame-validate-tests.h</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/control/xdlms-hdlc-control.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/control/xdlms-hdlc-control.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/control/xdlms-hdlc-control.h</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/parse/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/parse/xdlms-hdlc-parse.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/parse/xdlms-hdlc-parse.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/parse/xdlms-hdlc-parse.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/parse/xdlms-hdlc-parse.h</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/validate/tests</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/validate/xdlms-hdlc-frame-validate.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/validate/xdlms-hdlc-frame-validate.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/validate/xdlms-hdlc-frame-validate.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/validate/xdlms-hdlc-frame-validate.h</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/control/tests/xdlms-hdlc-control-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/control/tests/xdlms-hdlc-control-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/control/tests/xdlms-hdlc-control-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/control/tests/xdlms-hdlc-control-tests.h</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/parse/tests/xdlms-hdlc-parse-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/parse/tests/xdlms-hdlc-parse-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/parse/tests/xdlms-hdlc-parse-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/parse/tests/xdlms-hdlc-parse-tests.h</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/validate/tests/xdlms-hdlc-frame-validate-tests.c</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/validate/tests/xdlms-hdlc-frame-validate-tests.c</locationURI>
+		</link>
+		<link>
+			<name>sources/hdlc/support/frame/validate/tests/xdlms-hdlc-frame-validate-tests.h</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/src/xdlms/hdlc/support/frame/validate/tests/xdlms-hdlc-frame-validate-tests.h</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
