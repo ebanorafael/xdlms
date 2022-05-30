@@ -76,6 +76,12 @@ typedef struct hdlc_mac_info_t {
 	uint8_t *p_data;
 } hdlc_mac_info_t;
 
+typedef struct hdlc_context_t {
+	uint32_t status;
+	uint32_t rrr;
+	uint32_t sss;
+} hdlc_context_t;
+
 #ifdef UNIT_TESTS
 
 #else /* UNIT_TESTS */

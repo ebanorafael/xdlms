@@ -13,15 +13,8 @@ extern "C"
 
 #ifdef UNIT_TESTS
 
-#endif /* UNIT_TESTS */
-	
-/*******************************************************************
- * INCLUDES
- *******************************************************************/
-
-/* System functioning includes start */
-
-#ifdef UNIT_TESTS
+#define XDLMS_HDLC_CONTROL_MAX_SEQUENCE \
+	0x07
 
 #define XDLMS_HDLC_CONTROL_IS_I(CONTROL) \
   (((CONTROL) & (1 << 0)) == 0)
@@ -50,12 +43,33 @@ extern "C"
 #define XDLMS_HDLC_CONTROL_IS_UI(CONTROL) \
   (((CONTROL) & ~(1 << 4)) == ((1 << 1) | (1 << 0)))
 
+#define XDLMS_HDLC_CONTROL_GET_RRR(CONTROL) \
+	(((CONTROL) >> 5) & XDLMS_HDLC_CONTROL_MAX_SEQUENCE)
+
+#define XDLMS_HDLC_CONTROL_GET_SSS(CONTROL) \
+	(((CONTROL) >> 1) & XDLMS_HDLC_CONTROL_MAX_SEQUENCE)
 
 #endif /* UNIT_TESTS */
+
+/*******************************************************************
+ * INCLUDES
+ *******************************************************************/
+
+/* System functioning includes start */
+
+#include <stdint.h>
+
+#ifdef UNIT_TESTS
+
+#endif /* UNIT_TESTS */
+
+#include "xdlms-hdlc.h"
 
 /* System functioning includes end */
 
 /* Module functioning includes start */
+
+#include "status.h"
 
 #ifdef UNIT_TESTS
 
@@ -66,6 +80,11 @@ extern "C"
 /*******************************************************************
  * EXTERNED TYPES
  *******************************************************************/
+
+typedef struct hdlc_seq_num_t {
+	uint32_t rrr;
+	uint32_t sss;
+} hdlc_seq_num_t;
 
 #ifdef UNIT_TESTS
 
@@ -87,7 +106,30 @@ extern "C"
  * EXTERNED FUNCTIONS
  *******************************************************************/
 
+status_t
+xdlms_hdlc_control_parse(
+	const uint32_t control,
+	hdlc_seq_num_t p_to[static 1]
+);
+
 #ifdef UNIT_TESTS
+
+STATIC status_t
+xdlms_hdlc_control_rnr_frame_handle(
+	const uint32_t control,
+	hdlc_seq_num_t p_to[static 1]
+);
+
+STATIC status_t
+xdlms_hdlc_control_rr_frame_handle(
+	hdlc_seq_num_t p_to[static 1]
+);
+
+STATIC status_t
+xdlms_hdlc_control_i_frame_handle(
+	const uint32_t from,
+	hdlc_seq_num_t p_to[static 1]
+);
 
 #endif /* UNIT_TESTS */
  
