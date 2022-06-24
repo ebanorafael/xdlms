@@ -499,14 +499,14 @@ void xdlms_asn1_axdr_encode_sequence_of_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid data type tag */
+	if (0) { /* invalid data type tag */
 		status = xdlms_asn1_axdr_encode_sequence_of(NULL,
 		                                           XDLMS_ASN1_AXDR_TYPE_MAX,
 		                                           0xffffffff);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
 
-	if (1) { /* invalid output buffer */
+	if (0) { /* invalid output buffer */
 		status = xdlms_asn1_axdr_encode_sequence_of(NULL,
 		                                           XDLMS_ASN1_AXDR_TYPE_INT32,
 		                                           sizeof(uint32_t));
@@ -580,7 +580,7 @@ void xdlms_asn1_axdr_encode_sequence_of_bytes_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid parameters */
+	if (0) { /* invalid parameters */
 		status = xdlms_asn1_axdr_encode_sequence_of_bytes(NULL,
 		                                                 NULL,
 		                                                 XDLMS_ASN1_AXDR_TYPE_MAX);
@@ -661,12 +661,12 @@ void xdlms_asn1_axdr_encode_compact_array_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid output buffer */
+	if (0) { /* invalid output buffer */
 		status = xdlms_asn1_axdr_encode_compact_array(NULL, NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_ENCODE_FAIL);
 	}
 
-	if (1) { /* invalid input template buffer */
+	if (0) { /* invalid input template buffer */
 		uint8_t out[4];
 		array_t to = ARRAY_FREE(&out, sizeof(out));
 
@@ -788,7 +788,7 @@ void xdlms_asn1_axdr_encode_compact_array_tests(void) {
 		TEST_ASSERT_EQUAL(out[2], sizeof(in_contents));
 
 		MEMORY_TRACE(1, out, 3 + ARRAY_SIZE(in_contents), "Encoded (%u bytes): ",
-			3 + ARRAY_SIZE(in_contents));
+			(int32_t)(3 + ARRAY_SIZE(in_contents)));
 	}
 
 	/* Tests end */
@@ -805,7 +805,7 @@ void xdlms_ans1_axdr_encode_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) {
+	if (0) {
 		status = xdlms_asn1_axdr_encode(NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
@@ -814,7 +814,7 @@ void xdlms_ans1_axdr_encode_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid tag */
+	if (0) { /* invalid tag */
 		xdlms_asn1_axdr_resource_t from = {
 			.meta = { .tag = XDLMS_ASN1_AXDR_TYPE_MAX, .len = 0 },
 			.data = { .contents.p_sequence = NULL }
@@ -926,7 +926,8 @@ void xdlms_ans1_axdr_encode_tests(void) {
 		TEST_ASSERT_EQUAL(out[13], 'd');
 		TEST_ASSERT_EQUAL(out[14], '\0');
 
-		MEMORY_TRACE(1, out, 2 + ARRAY_SIZE(in), "Encoded (%u bytes): ", 2 + ARRAY_SIZE(in));
+		MEMORY_TRACE(1, out, 2 + ARRAY_SIZE(in), "Encoded (%u bytes): ",
+			(int32_t)(2 + ARRAY_SIZE(in)));
 	}
 
 	if (1) { /* success */
@@ -956,7 +957,8 @@ void xdlms_ans1_axdr_encode_tests(void) {
 		TEST_ASSERT_EQUAL(out[13], 'd');
 		TEST_ASSERT_EQUAL(out[14], '\0');
 
-		MEMORY_TRACE(1, out, 2 + ARRAY_SIZE(in), "Encoded (%u bytes): ", 2 + ARRAY_SIZE(in));
+		MEMORY_TRACE(1, out, 2 + ARRAY_SIZE(in), "Encoded (%u bytes): ",
+			(int32_t)(2 + ARRAY_SIZE(in)));
 	}
 
 	if (1) { /* fail: compact-array not implemented yet */
@@ -1052,7 +1054,7 @@ void xdlms_asn1_axdr_encode_list_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) {
+	if (0) {
 		status = xdlms_asn1_axdr_encode_list(NULL, NULL, 0);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
@@ -1061,7 +1063,7 @@ void xdlms_asn1_axdr_encode_list_tests(void) {
 
 	/* Tests start*/
 
-	if (1) {
+	if (0) {
 		xdlms_asn1_axdr_resource_t from = XDLMS_ASN1_AXDR_ENCODE_NULL;
 
 		status = xdlms_asn1_axdr_encode_list(&from, NULL, 1);

@@ -68,7 +68,7 @@ void xdlms_hdlc_parse_mac_format_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* fail: null parameter */
+	if (0) { /* fail: null parameter */
 		status_t status = STATUS_SUCCESS;
 
 		status = xdlms_hdlc_parse_mac_format(NULL, NULL);
@@ -80,7 +80,7 @@ void xdlms_hdlc_parse_mac_format_tests(void) {
   /* Tests start*/
 
 
-	if (1) { /* fail: null parameter */
+	if (0) { /* fail: null parameter */
 		status_t status = STATUS_SUCCESS;
 		uint32_t to = ~0;
 
@@ -136,14 +136,14 @@ void xdlms_hdlc_parse_and_validate_frame_length_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		status_t status = STATUS_SUCCESS;
 
 		status = xdlms_hdlc_parse_and_validate_frame_length(NULL, NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
 	}
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		size_t len = 0;
 		status_t status = STATUS_SUCCESS;
 
@@ -237,14 +237,14 @@ void xdlms_hdlc_parse_mac_addresses_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		status_t status = STATUS_SUCCESS;
 
 		status = xdlms_hdlc_parse_mac_addresses(NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
 	}
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		status_t status = STATUS_SUCCESS;
 		array_t from = ARRAY_FREE(NULL, 0);
 
@@ -310,7 +310,7 @@ void xdlms_hdlc_parse_mac_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		status_t status = STATUS_SUCCESS;
 
 		status = xdlms_hdlc_parse_mac(NULL, NULL);

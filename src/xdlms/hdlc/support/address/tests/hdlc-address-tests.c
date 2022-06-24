@@ -86,7 +86,7 @@ void hdlc_parse_address_tests(void) {
     TEST_ASSERT_EQUAL(address, (uint32_t)~0);
   }
 
-	if (1) { /* invalid size: 5 */
+	if (0) { /* invalid size: 5 */
     uint32_t address = hdlc_parse_address(NULL, sizeof(uint32_t) + 1);
     TEST_ASSERT_EQUAL(address, (uint32_t)~0);
   }
@@ -135,12 +135,12 @@ void hdlc_decode_address_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
     status_t status = hdlc_decode_address(NULL, NULL, -1);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		array_t from = ARRAY_FREE(NULL, 0);
 
     status_t status = hdlc_decode_address(&from, NULL, -1);
@@ -215,7 +215,7 @@ void hdlc_pull_address_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
     status_t status = hdlc_pull_address(NULL, NULL);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
@@ -266,7 +266,7 @@ void hdlc_build_address_tests(void) {
 
   /* Start of assertion test cases */
 
-  if (1) { /* fail: null pointer */
+  if (0) { /* fail: null pointer */
     status_t status = hdlc_build_address(NULL, NULL);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }
@@ -392,7 +392,7 @@ void hdlc_push_address_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
     status_t status = hdlc_push_address(NULL, NULL);
     TEST_ASSERT_EQUAL(status, STATUS_HDLC_INVALID_PARAMETER);
   }

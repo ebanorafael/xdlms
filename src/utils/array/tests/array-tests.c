@@ -66,7 +66,7 @@ void array_used_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* invalid parameter */
+	if (0) { /* invalid parameter */
 		size_t size = 0;
 
 		size = array_used(NULL);
@@ -121,7 +121,7 @@ void array_free_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* invalid parameter */
+	if (0) { /* invalid parameter */
 	  size_t size = 0;
 
 	  size = array_free(NULL);
@@ -160,7 +160,7 @@ void arrays_validate_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* invalid parameter */
+	if (0) { /* invalid parameter */
 		status_t status = STATUS_SUCCESS;
 
 		status = arrays_validate(NULL, NULL, 0);
@@ -243,7 +243,7 @@ void array_serialize_tests(void) {
 
   /* Start of assertion test cases */
 
-	if (1) { /* invalid parameter */
+	if (0) { /* invalid parameter */
     status_t status = STATUS_SUCCESS;
 
     status = array_serialize(NULL, NULL, -1);
@@ -291,7 +291,7 @@ void array_drop_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid parameter */
+	if (0) { /* invalid parameter */
     status_t status = STATUS_SUCCESS;
 
     status = array_drop(NULL, -1);
@@ -333,7 +333,7 @@ void array_copy_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid parameters */
+	if (0) { /* invalid parameters */
 		status_t status = STATUS_SUCCESS;
 
 		status = array_copy(NULL, NULL, -1);
@@ -372,7 +372,7 @@ void array_move_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid paramter */
+	if (0) { /* invalid paramter */
     status_t status = STATUS_SUCCESS;
 
     status = array_move(NULL, NULL, -1);
@@ -411,7 +411,7 @@ void array_push_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid paramter */
+	if (0) { /* invalid paramter */
     status_t status = STATUS_SUCCESS;
 
     status = array_push(NULL, NULL, -1);
@@ -449,7 +449,7 @@ void array_pull_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid paramter */
+	if (0) { /* invalid paramter */
     status_t status = STATUS_SUCCESS;
 
     status = array_pull(NULL, NULL, -1);
@@ -487,7 +487,7 @@ void array_push_hton_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid paramter */
+	if (0) { /* invalid paramter */
     status_t status = STATUS_SUCCESS;
 
     status = array_push_hton(NULL, NULL, -1);
@@ -534,7 +534,7 @@ void array_pull_hton_tests(void) {
 
   /* Tests start*/
 
-	if (1) { /* invalid paramter */
+	if (0) { /* invalid paramter */
     status_t status = STATUS_SUCCESS;
 
     status = array_pull_hton(NULL, NULL, -1);

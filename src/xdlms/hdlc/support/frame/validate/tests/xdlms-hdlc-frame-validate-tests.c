@@ -69,7 +69,7 @@ void hdlc_crc_validate_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) { /* fail: null pointer */
+	if (0) { /* fail: null pointer */
 		status_t status = STATUS_SUCCESS;
 
 		status = hdlc_crc_validate(NULL, 0);
@@ -291,7 +291,7 @@ void hdlc_frame_validate_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) { /* fail: invalid parameter */
+	if (0) { /* fail: invalid parameter */
 		status_t status = STATUS_SUCCESS;
 
 		status = hdlc_frame_validate(NULL, 0);

@@ -18,7 +18,7 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.1829406094." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.1728072454" name="Atollic PC Tools" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
 							<targetPlatform binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.1923986197" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
-							<builder buildPath="${workspace_loc:/test}/Debug" customBuilderProperties="toolChainpathType=1|toolChainpathString=C:\\Program Files (x86)\\Atollic\\TrueSTUDIO for STM32 9.3.0\\PCTools\\bin|" id="com.atollic.pctools.managedbuild.target.gnu.builder.base.1790106024" keepEnvironmentInBuildfile="false" name="GNU Make Builder" superClass="com.atollic.pctools.managedbuild.target.gnu.builder.base"/>
+							<builder buildPath="${workspace_loc:/test}/Debug" customBuilderProperties="toolChainpathType=3|toolChainpathString=C:\\msys64\\mingw64\\bin|" id="com.atollic.pctools.managedbuild.target.gnu.builder.base.1790106024" keepEnvironmentInBuildfile="false" name="GNU Make Builder" superClass="com.atollic.pctools.managedbuild.target.gnu.builder.base"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug.1909990039" name="Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.mingw.exe.debug">
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1330407429" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>

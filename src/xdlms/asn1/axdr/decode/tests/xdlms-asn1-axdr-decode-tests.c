@@ -75,7 +75,7 @@ void xdlms_asn1_axdr_decode_tag_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid controlled buffer 1 */
+	if (0) { /* invalid controlled buffer 1 */
 		type = xdlms_asn1_axdr_decode_tag(NULL);
 		TEST_ASSERT_EQUAL(type, XDLMS_ASN1_AXDR_TYPE_MAX);
 	}
@@ -169,7 +169,7 @@ void xdlms_asn1_axdr_decode_len_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid controlled buffer 1 */
+	if (0) { /* invalid controlled buffer 1 */
 		size = xdlms_asn1_axdr_decode_len(NULL);
 		TEST_ASSERT_EQUAL(size, -1);
 	}
@@ -294,7 +294,7 @@ void xdlms_asn1_axdr_decode_standard_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) { /* invalid input data */
+	if (0) { /* invalid input data */
 		status = xdlms_asn1_axdr_decode_standard(NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
@@ -303,7 +303,7 @@ void xdlms_asn1_axdr_decode_standard_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* fail: tag decoding fail */
+	if (0) { /* fail: tag decoding fail */
 		xdlms_asn1_axdr_resource_t to = XDLMS_ASN1_AXDR_DECODE_INITIALIZE_STD(NULL);
 
 		status = xdlms_asn1_axdr_decode_standard(NULL, &to);
@@ -384,7 +384,7 @@ void xdlms_asn1_axdr_decode_sequence_of_tests(void) {
 
 	/* Global test variables end */
 
-	if (1) { /* NULL pointer */
+	if (0) { /* NULL pointer */
 		status = xdlms_asn1_axdr_decode_sequence_of(NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
@@ -395,7 +395,7 @@ void xdlms_asn1_axdr_decode_sequence_of_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid input data */
+	if (0) { /* invalid input data */
 		xdlms_asn1_axdr_resource_t to;
 
 		status = xdlms_asn1_axdr_decode_sequence_of(NULL, &to);
@@ -475,7 +475,7 @@ void xdlms_asn1_axdr_decode_sequence_of_bytes_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid input parameter */
+	if (0) { /* invalid input parameter */
 		status = xdlms_asn1_axdr_decode_sequence_of_bytes(NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
@@ -505,7 +505,8 @@ void xdlms_asn1_axdr_decode_sequence_of_bytes_tests(void) {
 		status = xdlms_asn1_axdr_decode_sequence_of_bytes(&from, &to);
 		TEST_ASSERT_EQUAL(status, STATUS_SUCCESS);
 
-		MODULE_TRACE(1, "Decoded (%u bytes): %s.\n", array_used(&seq), seq.p_array);
+		MODULE_TRACE(1, "Decoded (%u bytes): %s.\n",
+			(int32_t)array_used(&seq), seq.p_array);
 	}
 
 	/* Tests end */
@@ -522,12 +523,12 @@ void xdlms_asn1_axdr_decode_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) { /* null output data pointer */
+	if (0) { /* null output data pointer */
 		status = xdlms_asn1_axdr_decode(NULL, NULL);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
 
-	if (1) { /* null input data pointer */
+	if (0) { /* null input data pointer */
 		xdlms_asn1_axdr_resource_t to;
 
 		status = xdlms_asn1_axdr_decode(NULL, &to);
@@ -602,7 +603,7 @@ void xdlms_asn1_axdr_decode_tests(void) {
 		TEST_ASSERT_EQUAL(out[11], 'd');
 
 		MODULE_TRACE(1, "Decoded (%u bytes): %s.\n",
-			array_used(&seq), seq.p_array);
+			(int32_t)array_used(&seq), seq.p_array);
 
 	}
 
@@ -640,12 +641,12 @@ void xdlms_asn1_axdr_decode_validate_tests(void) {
 
 	/* Start of assertion test cases */
 
-  if (1) { /* invalid input buffer */
+  if (0) { /* invalid input buffer */
   	status = xdlms_asn1_axdr_decode_validate(NULL, NULL);
   	TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
   }
 
-  if (1) { /* invalid input data descriptor */
+  if (0) { /* invalid input data descriptor */
   	array_t from = ARRAY_USED(NULL, 0);
 
   	status = xdlms_asn1_axdr_decode_validate(&from, NULL);
@@ -742,7 +743,7 @@ void xdlms_asn1_axdr_decode_list_tests(void) {
 
 	/* Start of assertion test cases */
 
-	if (1) { /* invalid output data pointer */
+	if (0) { /* invalid output data pointer */
 		status = xdlms_asn1_axdr_decode_list(NULL, NULL, 0);
 		TEST_ASSERT_EQUAL(status, STATUS_ASN1_AXDR_INVALID_PARAMETER);
 	}
@@ -751,7 +752,7 @@ void xdlms_asn1_axdr_decode_list_tests(void) {
 
 	/* Tests start*/
 
-	if (1) { /* invalid input data */
+	if (0) { /* invalid input data */
 		xdlms_asn1_axdr_resource_t to[] =  {
 			[0] = XDLMS_ASN1_AXDR_DECODE_INITIALIZE_STD(NULL)
 		};
